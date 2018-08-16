@@ -1,0 +1,32 @@
+h1 {
+    background-color: #4aaaa5;
+    font-family: 'Georgia', Times, Times New Roman, serif;
+    border: #cccccc;
+    color: white;
+    padding: 20px;
+}
+
+h2 {
+    font-family: 'Georgia', Times, Times New Roman, serif;
+    color: #4aaaa5;
+}
+
+footer {
+    background-color: #666666;
+    padding: 20px;
+    text-align: center;
+    color: lightslategrey;
+}
+
+#aboutPic {
+    border: 5px solid black;
+    float: left;
+}
+
+#submitBtn {
+    background-color: #4aaaa5;
+    font-family: 'Georgia', Times, Times New Roman, serif;
+    border: #cccccc;
+    color: white;
+    padding: 20px;
+}
