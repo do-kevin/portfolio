@@ -11,25 +11,36 @@
     <!--Contact Me Page-->
 <body>
 
-    <!--Navigational Menu-->
-    <a href="index.html">About</a>
-    <a href="portfolio.html">Portfolio</a>
-    <a href="contact.html">Contact</a>
 
-    <h1>Kevin Do</h1>
+    <details>
+            <section>
+                    <nav>
+                            <!--Navigational Menu-->
+                                
+                                <a class="tabs" href="contact.html">&nbsp; Contact &nbsp;</a>
+                                <a class="tabs" id="portfolioT" href="portfolio.html">&nbsp; Portfolio &nbsp;</a>
+                                <a class="tabs" id="indexT" href="index.html">&nbsp; About &nbsp;</a>
+                        
+                                <header>Kevin Do</header>
+                                <br>
+                    </nav>
+            </section>
 
-    <h2>Contact</h2>
-    <hr>
+    <summary>
+        <h2>Contact</h2>
+        <hr>
 
-    <form>
-        Name: <input type="text" value="John Smith"><br>
-        Email: <input type="text" value="example@gmail.com"><br>
-        Message: <input type="text"><br>
+        <form>
+            Name: <br><input type="text" value="John Smith"><br>
+            Email: <br><input type="text" value="example@gmail.com"><br>
+            Message: <br><textarea rows="10" cols="150"></textarea><br>
 
-        <input type="submit" value="Submit" id="submitBtn">
-    </form>
+            <input type="submit" value="Submit" id="submitBtn">
+        </form>
+    </summary>
+</details>
 
-    <footer>Copyright&copy;</footer>
+    <footer>Copyright &copy;</footer>
 
 
 </body>
