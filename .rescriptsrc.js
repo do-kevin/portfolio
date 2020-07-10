@@ -22,19 +22,16 @@ module.exports = [
         ];
       }
 
-      if (config.mode === 'development') {
-        config.plugins = [...config.plugins, new ReactRefreshWebpackPlugin()];
-      }
-
       config.plugins = [
         ...config.plugins,
+        config.mode === 'development' && new ReactRefreshWebpackPlugin(),
         new LodashModuleReplacementPlugin({
           shorthands: true,
           collections: true,
           paths: true,
           cloning: true,
         }),
-      ];
+      ].filter(Boolean);
 
       return config;
     },
