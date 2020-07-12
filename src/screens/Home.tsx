@@ -5,7 +5,7 @@ import { ShowcaseCarousel } from 'components';
 import { useScrollPosition } from 'hooks/useScrollPosition';
 import showcase from 'showcase.json';
 
-const showcaseModifier = 9;
+const showcaseModifier = 7;
 
 class HomeClass extends Component<{ useScrollPosition: number[] }> {
   state = {
