@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import { Grommet, grommet, Grid, Box, Image } from 'grommet';
+import { Grommet, grommet, Grid, Box } from 'grommet';
 import { animateScroll as scroll } from 'react-scroll';
+import { ShowcaseCarousel } from 'components';
 import { useScrollPosition } from 'hooks/useScrollPosition';
 import showcase from 'showcase.json';
-
-const src =
-  'https://images-wixmp-530a50041672c69d335ba4cf.wixmp.com/templates/image/b77fe464cfc445da9003a5383a3e1acf.jpg/v1/fill/w_322,h_182,q_90,usm_0.60_1.00_0.01/b77fe464cfc445da9003a5383a3e1acf.jpg';
 
 const showcaseModifier = 9;
 
@@ -16,9 +14,10 @@ class HomeClass extends Component<{ useScrollPosition: number[] }> {
   componentDidMount() {
     scroll.scrollToTop();
     const scrollHeight = document.body.scrollHeight;
-    const test =
-      (scrollHeight * (showcase.length * showcaseModifier)) / 69 - 10;
-    this.setState({ ...this.state, availableScrolling: test });
+    let scrollArea =
+      (scrollHeight * (showcase.length * showcaseModifier)) / 69 - 9;
+    scrollArea = Math.round(scrollArea);
+    this.setState({ ...this.state, availableScrolling: scrollArea });
   }
   render() {
     const { useScrollPosition } = this.props;
@@ -35,51 +34,28 @@ class HomeClass extends Component<{ useScrollPosition: number[] }> {
               <Grid rows={['xsmall', 'flex', 'xsmall']} fill="vertical">
                 <Box
                   as="header"
-                  background="accent-2"
+                  background="dark-2"
                   pad="small"
                   justify="center"
                 >
                   Kevin Do
-                  <div>{offsetY}</div>
+                  <div>{Math.round(offsetY)}</div>
                 </Box>
-                <Box as="main" background="accent-3" justify="center">
-                  <section
-                    className="flex flex-row items-center justify-center absolute"
-                    style={{ right: '40rem' }}
-                  >
-                    {showcase.map((item, index) => {
-                      return (
-                        <>
-                          <Box
-                            key={index}
-                            background="brand"
-                            pad="medium"
-                            style={{
-                              transform: `translateX(${
-                                offsetY / showcase.length
-                              }rem)`,
-                              marginLeft: '55rem',
-                              width: '20rem',
-                              height: '20rem',
-                            }}
-                          >
-                            <Image fit="cover" src={src}></Image>
-                            Name: {item.name} {index}
-                          </Box>
-                        </>
-                      );
-                    })}
-                  </section>
-                </Box>
-                <Box as="footer" background="accent-4">
+                <ShowcaseCarousel
+                  offsetY={offsetY}
+                  availableScrolling={this.state.availableScrolling}
+                  showcase={showcase}
+                />
+                <Box as="footer" background="dark-2">
                   Footer
                 </Box>
               </Grid>
             </Box>
-            <Box as="nav" pad="medium" background="dark-1">
-              <ul>
-                <li>Portfolio</li>
-                <li>Contact</li>
+            <Box as="nav" pad="medium" background="dark-3">
+              <ul className="text-white font-bold h-full">
+                <li>PORTFOLIO</li>
+                <li>ABOUT</li>
+                <li>CONTACT</li>
               </ul>
             </Box>
           </Grid>
