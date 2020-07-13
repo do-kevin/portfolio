@@ -1,0 +1,47 @@
+.scrollIcon {
+  display: block;
+  position: relative;
+  height: 3em;
+  width: 1.5em;
+  border: 0.25em solid #fff;
+  border-radius: 1em;
+
+  &__outerWheel {
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 0.6em;
+    height: 1em;
+    width: 0.4em;
+    margin-left: -0.2em;
+    border-radius: 0.4em;
+    overflow: hidden;
+  }
+
+  &__innerWheel {
+    display: block;
+    height: 100%;
+    width: 100%;
+    border-radius: inherit;
+    background: #fff;
+    animation: scrolling 2.75s ease-in-out infinite;
+  }
+}
+
+@keyframes scrolling {
+  0% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-0.6em);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  75% {
+    transform: translateY(0.6em);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}

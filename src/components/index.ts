@@ -1,3 +1,5 @@
 import ShowcaseCarousel from './ShowcaseCarousel';
+import { MouseScrollIcon } from './MouseScrollIcon';
+import { ShowcaseItem } from './ShowcaseItem';
 
-export { ShowcaseCarousel };
+export { ShowcaseCarousel, MouseScrollIcon, ShowcaseItem };

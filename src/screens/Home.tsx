@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { Grommet, grommet, Grid, Box, Button } from 'grommet';
+import { Grommet, grommet, Grid, Box } from 'grommet';
 import { animateScroll as scroll } from 'react-scroll';
-import { ShowcaseCarousel } from 'components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBriefcase, faUser } from '@fortawesome/free-solid-svg-icons';
+import { ShowcaseCarousel, MouseScrollIcon } from 'components';
 import { useScrollPosition } from 'hooks/useScrollPosition';
 import showcase from 'showcase.json';
 
@@ -13,20 +15,12 @@ class HomeClass extends Component<{ useScrollPosition: number[] }> {
     currentSlide: 0,
   };
 
-  moveToNextSlide = () => {
-    this.setState({ ...this.state, currentSlide: this.state.currentSlide + 1 });
-  };
-
-  moveToPrevSlide = () => {
-    this.setState({ ...this.state, currentSlide: this.state.currentSlide - 1 });
-  };
-
   moveToSlide = (index: number) => {
     this.setState({ ...this.state, currentSlide: index });
   };
 
   componentDidMount() {
-    // scroll.scrollToTop();
+    scroll.scrollToTop();
     const scrollHeight = document.body.scrollHeight;
 
     let scrollArea =
@@ -56,13 +50,12 @@ class HomeClass extends Component<{ useScrollPosition: number[] }> {
             <Box as="main" background="accent-1" fill responsive>
               <Grid rows={['xxsmall', 'flex']} fill="vertical">
                 <Box
+                  className="bg-transparent"
                   as="header"
-                  background="dark-2"
                   pad="small"
                   justify="center"
                 >
                   Kevin Do
-                  <div>{Math.round(offsetY)}</div>
                 </Box>
                 <ShowcaseCarousel
                   moveToSlide={this.moveToSlide}
@@ -75,12 +68,15 @@ class HomeClass extends Component<{ useScrollPosition: number[] }> {
             </Box>
             <Box as="nav" background="dark-3">
               <Grid rows={['xxsmall', 'flex', 'xxsmall']} fill>
-                <Box>Portfolio</Box>
-                <Box justify="center" align="center">
-                  <Button onClick={() => this.moveToNextSlide()}>Up</Button>
-                  <Button onClick={() => this.moveToPrevSlide()}>Down</Button>
+                <Box pad="medium" justify="center" align="center">
+                  <FontAwesomeIcon icon={faBriefcase} />
                 </Box>
-                <Box>Contact</Box>
+                <Box justify="center" align="center">
+                  <MouseScrollIcon />
+                </Box>
+                <Box justify="center" align="center">
+                  <FontAwesomeIcon icon={faUser} />
+                </Box>
               </Grid>
             </Box>
           </Grid>
