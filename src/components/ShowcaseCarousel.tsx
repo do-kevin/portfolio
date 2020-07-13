@@ -1,45 +1,72 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Image } from 'grommet';
 import { Carousel } from 'react-responsive-carousel';
 import styled from 'styled-components';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 const ShowcaseItem = (props) => {
-  const { index, offsetY, part, item, moveToSlide, showcaseLength } = props;
-  const [alreadyMoved, setAlreadyMoved] = useState(false);
+  const {
+    index,
+    offsetY,
+    part,
+    item,
+    moveToSlide,
+    showcaseLength,
+    currentSlide,
+  } = props;
+  const [display, setDisplay] = useState(false);
 
-  const target = index * part;
-  const threshold = target ? target * 0.1 : 0;
-  let maxThreshold = part ? Math.round(target + threshold) : 0;
-  let minThreshold = 0;
+  useEffect(() => {
+    let alreadyMoved = false;
+    const target = index * part;
+    const threshold = target ? target * 0.1 : 0;
+    let maxThreshold = part ? Math.round(target + threshold) : 0;
+    let minThreshold = 0;
 
-  if (target !== 0) {
-    minThreshold = Math.round(target - threshold);
-  }
-
-  if (index === 0) {
-    maxThreshold = Math.round(part * 0.8 + threshold);
-  }
-
-  if (index === 1) {
-    minThreshold = Math.round(minThreshold - minThreshold * 0.1);
-    maxThreshold = Math.round(maxThreshold + maxThreshold * 0.6);
-  }
-
-  if (showcaseLength && index === showcaseLength - 1) {
-    maxThreshold = Math.round(maxThreshold + maxThreshold * 0.52);
-  }
-
-  if (offsetY >= minThreshold && offsetY <= maxThreshold) {
-    if (!alreadyMoved) {
-      moveToSlide(index);
-      setAlreadyMoved(true);
+    if (target !== 0) {
+      minThreshold = Math.round(target - threshold);
     }
-  } else {
-    if (alreadyMoved) {
-      setAlreadyMoved(false);
+
+    if (index === 0) {
+      maxThreshold = Math.round(part * 0.8 + threshold);
     }
-  }
+
+    if (index === 1) {
+      minThreshold = Math.round(minThreshold - minThreshold * 0.1);
+      maxThreshold = Math.round(maxThreshold + maxThreshold * 0.6);
+    }
+
+    if (showcaseLength && index === showcaseLength - 1) {
+      maxThreshold = Math.round(maxThreshold + maxThreshold * 0.52);
+    }
+
+    if (offsetY >= minThreshold && offsetY <= maxThreshold) {
+      if (!alreadyMoved) {
+        moveToSlide(index);
+        alreadyMoved = true;
+        setDisplay(true);
+      }
+    } else {
+      if (alreadyMoved) {
+        alreadyMoved = false;
+        setDisplay(false);
+      }
+    }
+
+    if (currentSlide === index) {
+      setDisplay(true);
+    } else {
+      setDisplay(false);
+    }
+  }, [
+    offsetY,
+    currentSlide,
+    showcaseLength,
+    index,
+    part,
+    moveToSlide,
+    display,
+  ]);
 
   return (
     <Box
@@ -58,11 +85,7 @@ const ShowcaseItem = (props) => {
       <Box as="footer" direction="row" justify="between">
         <Box
           className="text-3xl font-bold text-left leading-none"
-          background={
-            offsetY >= minThreshold && offsetY <= maxThreshold
-              ? 'status-ok'
-              : 'status-critical'
-          }
+          background={display ? 'status-ok' : 'status-critical'}
         >
           {item.name}
         </Box>
@@ -70,9 +93,6 @@ const ShowcaseItem = (props) => {
           <span>REACT</span>
           <span>SCSS</span>
         </Box>
-      </Box>
-      <Box>
-        {minThreshold} to {maxThreshold}
       </Box>
     </Box>
   );
@@ -97,30 +117,37 @@ const StyledCarousel = styled(Carousel)`
 `;
 
 const ShowcaseCarousel = (props) => {
-  let { showcase, availableScrolling, offsetY } = props;
-  const [currentSlide, setCurrentSlide] = useState(0);
+  let {
+    showcase,
+    availableScrolling,
+    offsetY,
+    moveToSlide,
+    currentSlide,
+    onChange,
+  } = props;
+
+  console.log(currentSlide);
+
   offsetY = Math.round(offsetY);
   const part = Math.round(availableScrolling / showcase.length);
 
-  const moveToSlide = (index: number) => {
-    setCurrentSlide(index);
-  };
-
   return (
-    <Box as="main" background="dark-1">
+    <Box as="main" background="dark-1" className="z-10">
       <StyledCarousel
+        className="w-full h-full"
         centerMode
         showThumbs={false}
         centerSlidePercentage={100}
-        showArrows={true}
-        className="w-full h-full"
-        emulateTouch={true}
         showStatus={false}
         selectedItem={currentSlide}
+        showArrows={false}
+        emulateTouch={false}
+        showIndicators={false}
       >
         {showcase.map((item, index) => {
           return (
             <ShowcaseItem
+              currentSlide={currentSlide}
               key={'showcaseItem__' + index}
               item={item}
               index={index}
