@@ -72,9 +72,12 @@ const ShowcaseItem = (props) => {
       justify="center"
       as="div"
     >
-      <figure style={{ height: 'auto' }} className="shadow-lg mb-4 rounded">
+      <figure
+        style={{ height: 'auto', maxWidth: '25rem' }}
+        className="shadow-lg mb-4 rounded"
+      >
         <Image
-          className="rounded showcaseItem__image"
+          className="rounded"
           fit="cover"
           src={'https://i.imgur.com/xyiNfa9.png'}
         />

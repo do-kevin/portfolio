@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Route, Link } from 'react-router-dom';
 import { Grommet, grommet, Grid, Box } from 'grommet';
 import { animateScroll as scroll } from 'react-scroll';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -39,6 +40,8 @@ class HomeClass extends Component<{ useScrollPosition: number[] }> {
     const { useScrollPosition } = this.props;
     const [, , , offsetY] = useScrollPosition;
 
+    console.log(this.props);
+
     return (
       <>
         <Grommet full theme={grommet}>
@@ -54,22 +57,32 @@ class HomeClass extends Component<{ useScrollPosition: number[] }> {
                   as="header"
                   pad="small"
                   justify="center"
+                  background="dark-4"
                 >
-                  Kevin Do
+                  <Link to="/">Kevin Do</Link>
                 </Box>
-                <ShowcaseCarousel
-                  moveToSlide={this.moveToSlide}
-                  currentSlide={currentSlide}
-                  offsetY={offsetY}
-                  availableScrolling={availableScrolling}
-                  showcase={showcase}
+                <Route exact path="/">
+                  <ShowcaseCarousel
+                    moveToSlide={this.moveToSlide}
+                    currentSlide={currentSlide}
+                    offsetY={offsetY}
+                    availableScrolling={availableScrolling}
+                    showcase={showcase}
+                  />
+                </Route>
+                <Route
+                  exact
+                  path="/portfolio"
+                  component={() => <div>Portfolio</div>}
                 />
               </Grid>
             </Box>
             <Box as="nav" background="dark-3">
               <Grid rows={['xxsmall', 'flex', 'xxsmall']} fill>
                 <Box pad="medium" justify="center" align="center">
-                  <FontAwesomeIcon icon={faBriefcase} />
+                  <Link to="/portfolio">
+                    <FontAwesomeIcon icon={faBriefcase} />
+                  </Link>
                 </Box>
                 <Box justify="center" align="center">
                   <MouseScrollIcon />

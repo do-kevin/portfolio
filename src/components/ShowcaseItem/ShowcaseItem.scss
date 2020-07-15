@@ -2,6 +2,7 @@ $initialOpacity: 0.1;
 
 .showcaseItem {
   max-width: 30rem;
+  max-height: 25rem;
   @media only screen and (max-height: 414px) {
     width: 19rem;
     height: 100%;
