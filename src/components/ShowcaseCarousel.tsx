@@ -30,6 +30,7 @@ const ShowcaseCarousel = (props) => {
     offsetY,
     moveToSlide,
     currentSlide,
+    openPortfolioItem,
   } = props;
 
   offsetY = Math.round(offsetY);
@@ -52,6 +53,7 @@ const ShowcaseCarousel = (props) => {
         {showcase.map((item, index) => {
           return (
             <ShowcaseItem
+              onClick={() => openPortfolioItem(item)}
               currentSlide={currentSlide}
               key={'showcaseItem__' + index}
               item={item}

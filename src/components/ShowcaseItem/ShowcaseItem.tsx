@@ -11,6 +11,7 @@ const ShowcaseItem = (props) => {
     moveToSlide,
     showcaseLength,
     currentSlide,
+    onClick,
   } = props;
   const [display, setDisplay] = useState(false);
 
@@ -68,6 +69,7 @@ const ShowcaseItem = (props) => {
 
   return (
     <Box
+      onClick={onClick}
       className={`showcaseItem ${display ? 'fade-in' : 'fade-out'}`}
       justify="center"
       as="div"
@@ -76,11 +78,7 @@ const ShowcaseItem = (props) => {
         style={{ height: 'auto', maxWidth: '25rem' }}
         className="shadow-lg mb-4 rounded"
       >
-        <Image
-          className="rounded"
-          fit="cover"
-          src={'https://i.imgur.com/xyiNfa9.png'}
-        />
+        <Image className="rounded" fit="cover" src={item.image} />
       </figure>
       <Box as="footer" direction="row" justify="between">
         <Box
