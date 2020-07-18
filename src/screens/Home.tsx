@@ -16,9 +16,12 @@ import MyGrommetTheme from 'theme';
 import showcase from 'showcase.json';
 
 const CloseButton = styled(Button)`
-  background-color: red;
+  background-color: gray;
   border-radius: 50%;
-  margin: 0.5rem auto;
+  margin-top: 2rem;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 0.8rem 1rem;
   &:active,
   &:focus {
     outline: none;
@@ -36,6 +39,7 @@ class HomeClass extends Component<{ useScrollPosition: number[] }> {
       name: '',
       description: '',
       image: undefined,
+      technology: [],
     },
   };
 
@@ -91,16 +95,56 @@ class HomeClass extends Component<{ useScrollPosition: number[] }> {
               onClickOutside={() => this.closePortfolioItem()}
               className="overflow-auto"
             >
-              <Box margin="auto" style={{ maxWidth: 900 }}>
+              <Box
+                margin="auto"
+                direction="column"
+                style={{ maxWidth: 900 }}
+                className="pb-4"
+                fill
+              >
                 <CloseButton onClick={() => this.closePortfolioItem()}>
                   <FontAwesomeIcon icon={faTimes} className="block m-auto" />
                 </CloseButton>
+                <span className="block text-6xl font-bold my-12 text-center leading-tight">
+                  {currentInfo ? currentInfo && currentInfo.name : ''}
+                </span>
                 <Image
+                  fit="contain"
                   src={currentInfo ? currentInfo.image : undefined}
-                  className="rounded-lg"
+                  className="rounded-lg mb-4 shadow-md"
+                  style={{ minHeight: 563 }}
                 />
-                {currentInfo ? currentInfo && currentInfo.name : ''}
-                {currentInfo ? currentInfo && currentInfo.description : ''}
+                <Grid
+                  fill="vertical"
+                  columns={['flex', 'auto']}
+                  gap="small"
+                  className="pb-6"
+                >
+                  <Box
+                    className="p-3 rounded-lg"
+                    style={{ backgroundColor: 'rgba(1, 0, 15, 0.8)' }}
+                  >
+                    {currentInfo && currentInfo.description && (
+                      <>
+                        <span className="text-gray-500">Description</span>
+                        <p>{currentInfo.description}</p>
+                      </>
+                    )}
+                  </Box>
+                  <Box
+                    align="end"
+                    className="p-3 rounded-lg"
+                    style={{ backgroundColor: 'rgba(1, 0, 15, 0.8)' }}
+                  >
+                    <span className="text-gray-500">Technologies used</span>
+                    <ul className="text-right">
+                      {currentInfo &&
+                        currentInfo.technology &&
+                        currentInfo.technology.length &&
+                        currentInfo.technology.map((t) => <li>{t}</li>)}
+                    </ul>
+                  </Box>
+                </Grid>
               </Box>
             </Layer>
           )}

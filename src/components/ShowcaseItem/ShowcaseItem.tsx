@@ -81,15 +81,8 @@ const ShowcaseItem = (props) => {
         <Image className="rounded" fit="cover" src={item.image} />
       </figure>
       <Box as="footer" direction="row" justify="between">
-        <Box
-          className="text-3xl font-bold text-left leading-none"
-          background={display ? 'status-ok' : 'status-critical'}
-        >
+        <Box className="text-3xl font-bold text-left leading-none">
           {item.name}
-        </Box>
-        <Box direction="row" className="text-gray-400">
-          <span>REACT</span>
-          <span>SCSS</span>
         </Box>
       </Box>
     </Box>

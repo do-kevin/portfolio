@@ -1,21 +1,41 @@
 [
   {
     "name": "School Sector",
+    "type": "work",
     "image": "https://i.imgur.com/xyiNfa9.png",
     "featured": true,
-    "description": "Lorem ipsum",
-    "technology": ["React", "Whatever"]
+    "description": "An education app that provides courses and curriculums that students can enroll in. Students will be able to check their enrollments and statuses.",
+    "technology": [
+      "Sequelize",
+      "React",
+      "Unstated Next",
+      "Ant Design",
+      "Chart.js",
+      "Tailwind",
+      "SCSS"
+    ]
   },
   {
     "name": "Monster Hunter World Builder",
+    "type": "project",
     "image": "https://i.imgur.com/zJckZVJ.png",
     "featured": false,
-    "technology": ["React", "Whatever"]
+    "description": "An equipment builder app for Monster Hunter: World players. Users can create builds that shows stats and can share it with the community",
+    "technology": [
+      "React",
+      "Redux",
+      "Material Design",
+      "Recharts",
+      "Styled Components",
+      "SCSS"
+    ]
   },
   {
     "name": "Zephyr Node",
+    "type": "project",
     "image": "https://i.imgur.com/xyiNfa9.png",
     "featured": false,
-    "technology": ["React", "Whatever"]
+    "description": "A productivity app that helps organize their notes, to-dos, reminders, and flashcard decks. Its unique feature is giving users the option to send reminders and flashcards as text messages.",
+    "technology": ["React", "Bootstrap", "Styled Components", "SCSS"]
   }
 ]

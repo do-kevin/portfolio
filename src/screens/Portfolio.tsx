@@ -40,24 +40,52 @@ const Portfolio = (props) => {
       style={{ transform: `translateY(-${offsetY}px)` }}
     >
       <Box direction="row" justify="between" wrap style={{ maxWidth: 720 }}>
-        {showcase.map((s, index) => (
-          <Box
-            onClick={() => openPortfolioItem(s)}
-            key={'mosiacShowcaseItem__' + index}
-            className={`rounded mt-1 mosiacShowcase__item ${
-              s.featured ? 'mosiacShowcase__item--featured shadow-lg' : ''
-            }`}
-          >
-            <Image
-              src={s.image || undefined}
-              fit="cover"
-              className="mosiacShowcase__itemImage"
-            />
-            <span className="block relative text-white bg-black text-base mosiacShowcase__itemName">
-              {s.name}
-            </span>
-          </Box>
-        ))}
+        <span className="block text-5xl w-full text-center mt-12 mb-8">
+          WORK
+        </span>
+        {showcase
+          .filter((s) => s.type === 'work')
+          .map((s, index) => (
+            <Box
+              onClick={() => openPortfolioItem(s)}
+              key={'mosiacShowcaseItem__work' + index}
+              className={`rounded mt-1 mosiacShowcase__item ${
+                s.featured ? 'mosiacShowcase__item--featured shadow-lg' : ''
+              }`}
+            >
+              <Image
+                src={s.image || undefined}
+                fit="cover"
+                className="mosiacShowcase__itemImage"
+              />
+              <span className="block relative text-white bg-black text-base mosiacShowcase__itemName">
+                {s.name}
+              </span>
+            </Box>
+          ))}
+        <span className="block text-5xl w-full text-center mt-12 mb-8">
+          PROJECTS
+        </span>
+        {showcase
+          .filter((s) => s.type === 'project')
+          .map((s, index) => (
+            <Box
+              onClick={() => openPortfolioItem(s)}
+              key={'mosiacShowcaseItem__project' + index}
+              className={`rounded mt-1 mosiacShowcase__item ${
+                s.featured ? 'mosiacShowcase__item--featured shadow-lg' : ''
+              }`}
+            >
+              <Image
+                src={s.image || undefined}
+                fit="cover"
+                className="mosiacShowcase__itemImage"
+              />
+              <span className="block relative text-white bg-black text-base mosiacShowcase__itemName">
+                {s.name}
+              </span>
+            </Box>
+          ))}
       </Box>
     </StyledBox>
   );
