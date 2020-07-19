@@ -9,7 +9,7 @@ import {
   faTimes,
 } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
-import { ShowcaseCarousel, MouseScrollIcon } from 'components';
+import { ShowcaseCarousel, MouseScrollIcon, ShowcaseList } from 'components';
 import { useScrollPosition } from 'hooks/useScrollPosition';
 import { Portfolio } from 'screens';
 import MyGrommetTheme from 'theme';
@@ -122,7 +122,9 @@ class HomeClass extends Component<{ useScrollPosition: number[] }> {
                 >
                   <Box
                     className="p-3 rounded-lg"
-                    style={{ backgroundColor: 'rgba(1, 0, 15, 0.8)' }}
+                    style={{
+                      backgroundColor: 'rgba(1, 0, 15, 0.8)',
+                    }}
                   >
                     {currentInfo && currentInfo.description && (
                       <>
@@ -134,7 +136,9 @@ class HomeClass extends Component<{ useScrollPosition: number[] }> {
                   <Box
                     align="end"
                     className="p-3 rounded-lg"
-                    style={{ backgroundColor: 'rgba(1, 0, 15, 0.8)' }}
+                    style={{
+                      backgroundColor: 'rgba(1, 0, 15, 0.8)',
+                    }}
                   >
                     <span className="text-gray-500">Technologies used</span>
                     <ul className="text-right">
@@ -165,14 +169,21 @@ class HomeClass extends Component<{ useScrollPosition: number[] }> {
                   <Link to="/">Kevin Do</Link>
                 </Box>
                 <Route exact path="/">
-                  <ShowcaseCarousel
-                    moveToSlide={this.moveToSlide}
-                    currentSlide={currentSlide}
-                    offsetY={offsetY}
-                    availableScrolling={availableScrolling}
-                    showcase={showcase}
-                    openPortfolioItem={this.openPortfolioItem}
-                  />
+                  <>
+                    <ShowcaseList
+                      showcase={showcase}
+                      offsetY={offsetY}
+                      openPortfolioItem={this.openPortfolioItem}
+                    />
+                    <ShowcaseCarousel
+                      moveToSlide={this.moveToSlide}
+                      currentSlide={currentSlide}
+                      offsetY={offsetY}
+                      availableScrolling={availableScrolling}
+                      showcase={showcase}
+                      openPortfolioItem={this.openPortfolioItem}
+                    />
+                  </>
                 </Route>
                 <Route exact path="/portfolio">
                   <Portfolio

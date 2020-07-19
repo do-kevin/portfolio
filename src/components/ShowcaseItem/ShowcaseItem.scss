@@ -1,11 +1,27 @@
+$bp-1: 48em; // 768px
+$bp-2: 160em; // 2560px
+$bp-3: 240em; // 3840px
+
+$mq-1: '(min-width: #{$bp-1})';
+$mq-2: '(min-width: #{$bp-2})';
+$mq-3: '(min-width: #{$bp-3})';
+
 $initialOpacity: 0.1;
 
 .showcaseItem {
-  max-width: 30rem;
-  max-height: 25rem;
-  @media only screen and (max-height: 414px) {
-    width: 19rem;
+  text-align: center;
+  @media only screen and #{$mq-1} {
+    width: 40rem;
+  }
+  @media only screen and #{$mq-2} {
+    width: 50rem;
+  }
+  @media only screen and #{$mq-3} {
+    width: 60rem;
+  }
+  &__figure {
     height: 100%;
+    width: 100%;
   }
 }
 

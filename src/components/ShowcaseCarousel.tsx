@@ -5,7 +5,12 @@ import styled from 'styled-components';
 import { ShowcaseItem } from 'components';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
+const bp1 = '48em';
+
 const StyledCarousel = styled(Carousel)`
+  @media only screen and (max-width: ${bp1}) {
+    display: none;
+  }
   .carousel.carousel-slider {
     height: 100%;
   }
@@ -31,13 +36,20 @@ const ShowcaseCarousel = (props) => {
     moveToSlide,
     currentSlide,
     openPortfolioItem,
+    className,
+    style,
   } = props;
 
   offsetY = Math.round(offsetY);
   const part = Math.round(availableScrolling / showcase.length);
 
   return (
-    <Box as="main" background="dark-1" className="z-10">
+    <Box
+      as="main"
+      background="dark-1"
+      className={`z-10 ${className}`}
+      style={style}
+    >
       <StyledCarousel
         className="w-full h-full"
         centerMode
