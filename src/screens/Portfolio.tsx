@@ -39,7 +39,13 @@ const Portfolio = (props) => {
       className="pt-10 rounded mosiacShowcase"
       style={{ transform: `translateY(-${offsetY}px)` }}
     >
-      <Box direction="row" justify="between" wrap style={{ maxWidth: 720 }}>
+      <Box
+        direction="row"
+        justify="between"
+        wrap
+        fill
+        style={{ maxWidth: 720 }}
+      >
         <span className="block text-5xl w-full text-center mt-12 mb-8">
           WORK
         </span>

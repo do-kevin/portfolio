@@ -5,8 +5,8 @@ import { animateScroll as scroll } from 'react-scroll';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faBriefcase,
-  faUser,
   faTimes,
+  faInfoCircle,
 } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
 import { ShowcaseCarousel, MouseScrollIcon, ShowcaseList } from 'components';
@@ -14,6 +14,7 @@ import { useScrollPosition } from 'hooks/useScrollPosition';
 import { Portfolio } from 'screens';
 import MyGrommetTheme from 'theme';
 import showcase from 'showcase.json';
+import About from './About';
 
 const CloseButton = styled(Button)`
   background-color: gray;
@@ -30,7 +31,10 @@ const CloseButton = styled(Button)`
 
 const showcaseModifier = 7;
 
-class HomeClass extends Component<{ useScrollPosition: number[] }> {
+class HomeClass extends Component<{
+  useScrollPosition: number[];
+  location: any;
+}> {
   state = {
     availableScrolling: 0,
     currentSlide: 0,
@@ -81,8 +85,11 @@ class HomeClass extends Component<{ useScrollPosition: number[] }> {
       showPortfolioItem,
       currentInfo,
     } = this.state;
-    const { useScrollPosition } = this.props;
+    const { useScrollPosition, location } = this.props;
+    const { pathname } = location;
     const [, , , offsetY] = useScrollPosition;
+
+    console.log(this.props);
 
     return (
       <>
@@ -158,16 +165,7 @@ class HomeClass extends Component<{ useScrollPosition: number[] }> {
             className="w-full h-full fixed top-0"
           >
             <Box as="main" background="accent-1" fill responsive>
-              <Grid rows={['xxsmall', 'flex']} fill="vertical">
-                <Box
-                  className="bg-transparent z-10"
-                  as="header"
-                  pad="small"
-                  justify="center"
-                  background="dark-4"
-                >
-                  <Link to="/">Kevin Do</Link>
-                </Box>
+              <Grid rows={['flex']} fill="vertical">
                 <Route exact path="/">
                   <>
                     <ShowcaseList
@@ -193,34 +191,46 @@ class HomeClass extends Component<{ useScrollPosition: number[] }> {
                     openPortfolioItem={this.openPortfolioItem}
                   />
                 </Route>
+                <Route exact path="/about">
+                  <About />
+                </Route>
               </Grid>
             </Box>
             <Box as="nav" background="dark-3">
-              <Grid rows={['xxsmall', 'flex', 'xxsmall']} fill>
-                <Box pad="medium" justify="center" align="center">
+              <Grid rows={['xsmall', 'flex', 'xsmall']} fill>
+                <Box
+                  pad="medium"
+                  justify="center"
+                  align="center"
+                  className="pt-4"
+                >
+                  <Link to="/">KD</Link>
+                </Box>
+                <Box justify="center" align="center">
+                  <Link to="/about">
+                    <FontAwesomeIcon icon={faInfoCircle} />
+                  </Link>
+                  <MouseScrollIcon className="my-4" style={{ height: '3em' }} />
                   <Link to="/portfolio">
                     <FontAwesomeIcon icon={faBriefcase} />
                   </Link>
                 </Box>
-                <Box justify="center" align="center">
-                  <MouseScrollIcon />
-                </Box>
-                <Box justify="center" align="center">
-                  <FontAwesomeIcon icon={faUser} />
-                </Box>
+                <Box justify="center" align="center"></Box>
               </Grid>
             </Box>
           </Grid>
         </Grommet>
-        <Box
-          style={{
-            height:
-              showcase && showcase.length
-                ? `${showcase.length * showcaseModifier}rem`
-                : 0,
-          }}
-          className="w-2"
-        />
+        {(pathname === '/' || pathname === '/portfolio') && (
+          <Box
+            style={{
+              height:
+                showcase && showcase.length
+                  ? `${showcase.length * showcaseModifier}rem`
+                  : 0,
+            }}
+            className="w-2"
+          />
+        )}
       </>
     );
   }
