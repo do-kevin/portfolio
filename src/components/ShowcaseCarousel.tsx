@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box } from 'grommet';
 import { Carousel } from 'react-responsive-carousel';
 import styled from 'styled-components';
@@ -40,8 +40,13 @@ const ShowcaseCarousel = (props) => {
     style,
   } = props;
 
+  const [onCurrentSlide, setOnCurrentSlide] = useState(0);
+  const [slides, setSlides] = useState({ current: 0, total: 0 });
+
   offsetY = Math.round(offsetY);
   const part = Math.round(availableScrolling / showcase.length);
+
+  const { current, total } = slides;
 
   return (
     <Box
@@ -55,7 +60,16 @@ const ShowcaseCarousel = (props) => {
         centerMode
         showThumbs={false}
         centerSlidePercentage={100}
-        showStatus={false}
+        showStatus={true}
+        statusFormatter={(current, total) => {
+          setTimeout(() => {
+            if (onCurrentSlide !== current) {
+              setOnCurrentSlide(current);
+              setSlides({ current, total });
+            }
+          }, 50);
+          return '';
+        }}
         selectedItem={currentSlide}
         showArrows={false}
         emulateTouch={false}
@@ -78,6 +92,9 @@ const ShowcaseCarousel = (props) => {
           );
         })}
       </StyledCarousel>
+      <div className="w-full text-center pt-1 pb-6 text-2xl">
+        {current} / {total}
+      </div>
     </Box>
   );
 };

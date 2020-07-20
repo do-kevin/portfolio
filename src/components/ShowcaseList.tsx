@@ -9,9 +9,10 @@ const ShowcaseList = (props) => {
       className="showcaseList"
       style={{ transform: `translateY(-${offsetY}px)` }}
     >
-      {showcase.map((s) => (
+      {showcase.map((s, index) => (
         <ShowcaseItem
           item={s}
+          key={'itemInList' + index}
           className="mb-4"
           onClick={() => openPortfolioItem(s)}
         />

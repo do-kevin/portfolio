@@ -10,7 +10,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
 import { ShowcaseCarousel, MouseScrollIcon, ShowcaseList } from 'components';
-import { useScrollPosition } from 'hooks/useScrollPosition';
+import { useScrollPosition, useIsScrolling } from 'hooks';
 import { Portfolio } from 'screens';
 import MyGrommetTheme from 'theme';
 import showcase from 'showcase.json';
@@ -34,6 +34,7 @@ const showcaseModifier = 7;
 class HomeClass extends Component<{
   useScrollPosition: number[];
   location: any;
+  useIsScrolling: boolean[];
 }> {
   state = {
     availableScrolling: 0,
@@ -55,8 +56,7 @@ class HomeClass extends Component<{
     scroll.scrollToTop();
     const scrollHeight = document.body.scrollHeight;
 
-    let scrollArea =
-      (scrollHeight * (showcase.length * showcaseModifier)) / 69 - 9;
+    let scrollArea = (scrollHeight * (showcase.length * showcaseModifier)) / 60;
     scrollArea = Math.round(scrollArea);
 
     this.setState(
@@ -85,11 +85,10 @@ class HomeClass extends Component<{
       showPortfolioItem,
       currentInfo,
     } = this.state;
-    const { useScrollPosition, location } = this.props;
+    const { useScrollPosition, useIsScrolling, location } = this.props;
     const { pathname } = location;
     const [, , , offsetY] = useScrollPosition;
-
-    console.log(this.props);
+    const [isScrolling] = useIsScrolling;
 
     return (
       <>
@@ -210,7 +209,11 @@ class HomeClass extends Component<{
                   <Link to="/about">
                     <FontAwesomeIcon icon={faInfoCircle} />
                   </Link>
-                  <MouseScrollIcon className="my-4" style={{ height: '3em' }} />
+                  <MouseScrollIcon
+                    className="my-4"
+                    style={{ height: '3em' }}
+                    isScrolling={isScrolling}
+                  />
                   <Link to="/portfolio">
                     <FontAwesomeIcon icon={faBriefcase} />
                   </Link>
@@ -238,5 +241,6 @@ class HomeClass extends Component<{
 
 export default function Home(props) {
   const uSP = useScrollPosition();
-  return <HomeClass {...props} useScrollPosition={uSP} />;
+  const uIS = useIsScrolling();
+  return <HomeClass {...props} useScrollPosition={uSP} useIsScrolling={uIS} />;
 }
