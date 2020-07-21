@@ -30,7 +30,7 @@ const StyledBox = styled(Box)`
   }
 `;
 
-const Portfolio = (props) => {
+export const Portfolio = (props) => {
   const { offsetY, openPortfolioItem } = props;
   return (
     <StyledBox
@@ -96,5 +96,3 @@ const Portfolio = (props) => {
     </StyledBox>
   );
 };
-
-export default Portfolio;

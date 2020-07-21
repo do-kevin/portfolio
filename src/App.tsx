@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
-import { imported } from 'react-imported-component/macro';
+import { Home } from 'screens';
 
-const Home = imported(() => import('screens/Home'));
-
-class App extends Component {
+export class App extends Component {
   render() {
     // Checks if homepage in package.json exists
     const basename = process.env.PUBLIC_URL || undefined;
@@ -18,5 +16,3 @@ class App extends Component {
     );
   }
 }
-
-export default App;

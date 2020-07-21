@@ -1,6 +1,6 @@
-@import '~tailwindcss/dist/base.min.css';
-@import '~tailwindcss/dist/components.min.css';
-@import '~tailwindcss/dist/utilities.min.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 body {
   margin: 0;
@@ -12,6 +12,7 @@ body {
   height: 100%;
   width: 100%;
   color: rgb(255, 255, 255);
+  background-color: rgb(14, 21, 58);
 }
 
 #root {

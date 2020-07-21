@@ -1,7 +1,7 @@
 import React from 'react';
 import './MouseScrollIcon.scss';
 
-const MouseScrollIcon = (props) => {
+export const MouseScrollIcon = (props) => {
   const { className, style, isScrolling } = props;
 
   return (
@@ -15,5 +15,3 @@ const MouseScrollIcon = (props) => {
     </span>
   );
 };
-
-export default MouseScrollIcon;

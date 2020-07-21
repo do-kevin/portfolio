@@ -1,3 +1,3 @@
-import MouseScrollIcon from './MouseScrollIcon';
+import { MouseScrollIcon } from './MouseScrollIcon';
 
 export { MouseScrollIcon };

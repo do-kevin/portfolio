@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Box, Image } from 'grommet';
 import './ShowcaseItem.scss';
 
-const ShowcaseItem = (props) => {
+export const ShowcaseItem = (props) => {
   const {
     index,
     offsetY,
@@ -72,9 +72,9 @@ const ShowcaseItem = (props) => {
     <Box
       basis="auto"
       onClick={onClick}
-      className={`showcaseItem ${
+      className={`showcaseItem rounded ${
         display ? 'fade-in' : 'fade-out'
-      } mx-2 ${className}`}
+      } mx-2 ${className || ''}`}
       justify="center"
       as="div"
     >
@@ -99,5 +99,3 @@ const ShowcaseItem = (props) => {
     </Box>
   );
 };
-
-export default ShowcaseItem;

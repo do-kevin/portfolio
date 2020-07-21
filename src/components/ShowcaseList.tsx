@@ -2,7 +2,7 @@ import React from 'react';
 import { ShowcaseItem } from 'components';
 import './ShowcaseList.scss';
 
-const ShowcaseList = (props) => {
+export const ShowcaseList = (props) => {
   const { showcase, offsetY, openPortfolioItem } = props;
   return (
     <div
@@ -20,5 +20,3 @@ const ShowcaseList = (props) => {
     </div>
   );
 };
-
-export default ShowcaseList;

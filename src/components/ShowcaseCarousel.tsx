@@ -28,7 +28,7 @@ const StyledCarousel = styled(Carousel)`
   }
 `;
 
-const ShowcaseCarousel = (props) => {
+export const ShowcaseCarousel = (props) => {
   let {
     showcase,
     availableScrolling,
@@ -49,12 +49,7 @@ const ShowcaseCarousel = (props) => {
   const { current, total } = slides;
 
   return (
-    <Box
-      as="main"
-      background="dark-1"
-      className={`z-10 ${className}`}
-      style={style}
-    >
+    <Box as="main" className={`z-10 ${className}`} style={style}>
       <StyledCarousel
         className="w-full h-full"
         centerMode
@@ -98,5 +93,3 @@ const ShowcaseCarousel = (props) => {
     </Box>
   );
 };
-
-export default ShowcaseCarousel;

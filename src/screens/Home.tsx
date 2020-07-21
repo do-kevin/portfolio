@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route, NavLink } from 'react-router-dom';
 import { Grommet, Grid, Box, Layer, Image, Button } from 'grommet';
 import { animateScroll as scroll } from 'react-scroll';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -12,9 +12,10 @@ import styled from 'styled-components';
 import { ShowcaseCarousel, MouseScrollIcon, ShowcaseList } from 'components';
 import { useScrollPosition, useIsScrolling } from 'hooks';
 import { Portfolio } from 'screens';
-import MyGrommetTheme from 'theme';
+import { theme as MyGrommetTheme } from 'theme';
 import showcase from 'showcase.json';
-import About from './About';
+import { About } from './About';
+import { colors } from 'theme';
 
 const CloseButton = styled(Button)`
   background-color: gray;
@@ -163,7 +164,7 @@ class HomeClass extends Component<{
             columns={['flex', '5rem']}
             className="w-full h-full fixed top-0"
           >
-            <Box as="main" background="accent-1" fill responsive>
+            <Box as="main" fill background="primary-theme-1">
               <Grid rows={['flex']} fill="vertical">
                 <Route exact path="/">
                   <>
@@ -195,28 +196,48 @@ class HomeClass extends Component<{
                 </Route>
               </Grid>
             </Box>
-            <Box as="nav" background="dark-3">
+            <Box
+              as="nav"
+              background="primary-theme-2"
+              border={{
+                color: 'quaternary-theme-1',
+                side: 'left',
+                size: 'xsmall',
+                style: 'solid',
+              }}
+            >
               <Grid rows={['xsmall', 'flex', 'xsmall']} fill>
-                <Box
-                  pad="medium"
-                  justify="center"
-                  align="center"
-                  className="pt-4"
-                >
-                  <Link to="/">KD</Link>
+                <Box justify="center" align="center">
+                  <NavLink
+                    exact
+                    to="/"
+                    className="text-white w-full h-full flex justify-center items-center text-3xl focus:shadow-outline"
+                    activeStyle={{ color: colors['secondary-theme-1'] }}
+                  >
+                    KD
+                  </NavLink>
                 </Box>
                 <Box justify="center" align="center">
-                  <Link to="/about">
+                  <NavLink
+                    exact
+                    to="/about"
+                    className="text-white w-full py-4 flex justify-center items-center text-3xl focus:shadow-outline"
+                    activeStyle={{ color: colors['secondary-theme-1'] }}
+                  >
                     <FontAwesomeIcon icon={faInfoCircle} />
-                  </Link>
+                  </NavLink>
                   <MouseScrollIcon
-                    className="my-4"
                     style={{ height: '3em' }}
                     isScrolling={isScrolling}
                   />
-                  <Link to="/portfolio">
+                  <NavLink
+                    exact
+                    to="/portfolio"
+                    className="text-white w-full py-4 flex justify-center items-center text-3xl focus:shadow-outline"
+                    activeStyle={{ color: colors['secondary-theme-1'] }}
+                  >
                     <FontAwesomeIcon icon={faBriefcase} />
-                  </Link>
+                  </NavLink>
                 </Box>
                 <Box justify="center" align="center"></Box>
               </Grid>
@@ -239,7 +260,7 @@ class HomeClass extends Component<{
   }
 }
 
-export default function Home(props) {
+export function Home(props) {
   const uSP = useScrollPosition();
   const uIS = useIsScrolling();
   return <HomeClass {...props} useScrollPosition={uSP} useIsScrolling={uIS} />;

@@ -9,8 +9,8 @@ const logConfig = (config) => {
 logConfig.isMiddleware = true;
 
 module.exports = [
-  'env',
   ['use-postcss-config'],
+  'env',
   {
     webpack: (config) => {
       const enableBundleAnalyzer =
@@ -25,7 +25,7 @@ module.exports = [
           paths: true,
           cloning: true,
         }),
-        enableBundleAnalyzer &&
+        enableBundleAnalyzer === true &&
           new BundleAnalyzerPlugin({
             analyzerMode: 'static',
             reportFilename: 'report.html',
