@@ -1,34 +1,19 @@
 import React, { Component } from 'react';
 import { Route, NavLink } from 'react-router-dom';
-import { Grommet, Grid, Box, Layer, Image, Button } from 'grommet';
+import { Grommet, Grid, Box } from 'grommet';
 import { animateScroll as scroll } from 'react-scroll';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faBriefcase,
-  faTimes,
-  faInfoCircle,
-} from '@fortawesome/free-solid-svg-icons';
-import styled from 'styled-components';
+import { faBriefcase, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import { imported } from 'react-imported-component/macro';
 import { ShowcaseCarousel, MouseScrollIcon, ShowcaseList } from 'components';
 import { useScrollPosition, useIsScrolling } from 'hooks';
-import { Portfolio } from 'screens';
 import { theme as MyGrommetTheme } from 'theme';
 import showcase from 'showcase.json';
-import { About } from './About';
 import { colors } from 'theme';
 
-const CloseButton = styled(Button)`
-  background-color: gray;
-  border-radius: 50%;
-  margin-top: 2rem;
-  margin-right: auto;
-  margin-left: auto;
-  padding: 0.8rem 1rem;
-  &:active,
-  &:focus {
-    outline: none;
-  }
-`;
+const Portfolio = imported(() => import('screens/Portfolio'));
+const About = imported(() => import('screens/About'));
+const ShowcaseLayer = imported(() => import('components/ShowcaseLayer'));
 
 const showcaseModifier = 7;
 
@@ -95,69 +80,10 @@ class HomeClass extends Component<{
       <>
         <Grommet full theme={MyGrommetTheme}>
           {showPortfolioItem && (
-            <Layer
-              full
-              animation="fadeIn"
-              onEsc={() => this.closePortfolioItem()}
-              onClickOutside={() => this.closePortfolioItem()}
-              className="overflow-auto"
-            >
-              <Box
-                margin="auto"
-                direction="column"
-                style={{ maxWidth: 900 }}
-                className="pb-4"
-                fill
-              >
-                <CloseButton onClick={() => this.closePortfolioItem()}>
-                  <FontAwesomeIcon icon={faTimes} className="block m-auto" />
-                </CloseButton>
-                <span className="block text-6xl font-bold my-12 text-center leading-tight">
-                  {currentInfo ? currentInfo && currentInfo.name : ''}
-                </span>
-                <Image
-                  fit="contain"
-                  src={currentInfo ? currentInfo.image : undefined}
-                  className="rounded-lg mb-4 shadow-md"
-                  style={{ minHeight: 563 }}
-                />
-                <Grid
-                  fill="vertical"
-                  columns={['flex', 'auto']}
-                  gap="small"
-                  className="pb-6"
-                >
-                  <Box
-                    className="p-3 rounded-lg"
-                    style={{
-                      backgroundColor: 'rgba(1, 0, 15, 0.8)',
-                    }}
-                  >
-                    {currentInfo && currentInfo.description && (
-                      <>
-                        <span className="text-gray-500">Description</span>
-                        <p>{currentInfo.description}</p>
-                      </>
-                    )}
-                  </Box>
-                  <Box
-                    align="end"
-                    className="p-3 rounded-lg"
-                    style={{
-                      backgroundColor: 'rgba(1, 0, 15, 0.8)',
-                    }}
-                  >
-                    <span className="text-gray-500">Technologies used</span>
-                    <ul className="text-right">
-                      {currentInfo &&
-                        currentInfo.technology &&
-                        currentInfo.technology.length &&
-                        currentInfo.technology.map((t) => <li>{t}</li>)}
-                    </ul>
-                  </Box>
-                </Grid>
-              </Box>
-            </Layer>
+            <ShowcaseLayer
+              showcase={currentInfo}
+              onClose={() => this.closePortfolioItem()}
+            />
           )}
           <Grid
             fill="vertical"
@@ -211,7 +137,7 @@ class HomeClass extends Component<{
                   <NavLink
                     exact
                     to="/"
-                    className="text-white w-full h-full flex justify-center items-center text-3xl focus:shadow-outline"
+                    className="text-white w-full h-full flex justify-center items-center text-3xl focus:shadow-outline hover:text-secondary-theme-1 transition duration-200 ease-in-out font-titilliumWeb"
                     activeStyle={{ color: colors['secondary-theme-1'] }}
                   >
                     KD
@@ -221,7 +147,7 @@ class HomeClass extends Component<{
                   <NavLink
                     exact
                     to="/about"
-                    className="text-white w-full py-4 flex justify-center items-center text-3xl focus:shadow-outline"
+                    className="text-white w-full py-4 flex justify-center items-center text-3xl focus:shadow-outline hover:text-secondary-theme-1 transition duration-200 ease-in-out"
                     activeStyle={{ color: colors['secondary-theme-1'] }}
                   >
                     <FontAwesomeIcon icon={faInfoCircle} />
@@ -233,7 +159,7 @@ class HomeClass extends Component<{
                   <NavLink
                     exact
                     to="/portfolio"
-                    className="text-white w-full py-4 flex justify-center items-center text-3xl focus:shadow-outline"
+                    className="text-white w-full py-4 flex justify-center items-center text-3xl focus:shadow-outline hover:text-secondary-theme-1 transition duration-200 ease-in-out"
                     activeStyle={{ color: colors['secondary-theme-1'] }}
                   >
                     <FontAwesomeIcon icon={faBriefcase} />
@@ -260,7 +186,7 @@ class HomeClass extends Component<{
   }
 }
 
-export function Home(props) {
+export default function Home(props) {
   const uSP = useScrollPosition();
   const uIS = useIsScrolling();
   return <HomeClass {...props} useScrollPosition={uSP} useIsScrolling={uIS} />;

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
-import { Home } from 'screens';
+import { imported } from 'react-imported-component/macro';
+
+const Home = imported(() => import('screens/Home'));
 
 export class App extends Component {
   render() {

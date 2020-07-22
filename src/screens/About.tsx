@@ -36,7 +36,7 @@ const anchors = [
   },
 ];
 
-export const About = () => {
+const About = () => {
   return (
     <StyledBox margin="auto" justify="center" pad="medium">
       <Heading size="large" level={3}>
@@ -45,17 +45,26 @@ export const About = () => {
       <Heading
         size="large"
         style={{ right: 3 }}
-        className="relative"
+        className="relative font-titilliumWeb"
         margin={{ bottom: 'small' }}
       >
         I am Kevin Do
       </Heading>
       <Heading size="large" level={3} margin={{ bottom: 'small' }}>
-        A <span className="text-secondary-theme-1">Front End</span> Engineer,{' '}
-        <br />
+        A{' '}
+        <span className="text-secondary-theme-1" style={{ color: '#a7ff83' }}>
+          Front End
+        </span>{' '}
+        Engineer, <br />
         based in California
       </Heading>
-      <Paragraph fill size="large" margin={{ bottom: 'small' }}>
+      <Paragraph
+        color="quaternary-theme-1"
+        fill
+        size="large"
+        className="text-base"
+        margin={{ bottom: 'small' }}
+      >
         I specialize in building web applications and bringing the clients'
         projects to life. Want to work together? Feel free to reach me.
       </Paragraph>
@@ -66,12 +75,7 @@ export const About = () => {
               <FontAwesomeIcon icon={icon} />
             </Box>
             <Box width="auto">
-              <Anchor
-                label={label}
-                href={href}
-                color="tertiary-theme-1"
-                // className="my-2 ml-2"
-              />
+              <Anchor label={label} href={href} color="secondary-theme-1" />
             </Box>
           </Box>
         ))}
@@ -79,3 +83,5 @@ export const About = () => {
     </StyledBox>
   );
 };
+
+export default About;

@@ -30,7 +30,7 @@ const StyledBox = styled(Box)`
   }
 `;
 
-export const Portfolio = (props) => {
+const Portfolio = (props) => {
   const { offsetY, openPortfolioItem } = props;
   return (
     <StyledBox
@@ -46,7 +46,7 @@ export const Portfolio = (props) => {
         fill
         style={{ maxWidth: 720 }}
       >
-        <span className="block text-5xl w-full text-center mt-12 mb-8">
+        <span className="block text-5xl w-full text-center mt-12 mb-8 font-titilliumWeb">
           WORK
         </span>
         {showcase
@@ -69,7 +69,7 @@ export const Portfolio = (props) => {
               </span>
             </Box>
           ))}
-        <span className="block text-5xl w-full text-center mt-12 mb-8">
+        <span className="block text-5xl w-full text-center mt-12 mb-8 font-titilliumWeb">
           PROJECTS
         </span>
         {showcase
@@ -96,3 +96,5 @@ export const Portfolio = (props) => {
     </StyledBox>
   );
 };
+
+export default Portfolio;

@@ -9,21 +9,19 @@ const logConfig = (config) => {
 logConfig.isMiddleware = true;
 
 module.exports = [
-  ['use-postcss-config'],
   'env',
   {
     webpack: (config) => {
       const enableBundleAnalyzer =
-        process.env.REACT_APP_ENABLE_BUNDLE_ANALYZER || false;
+        JSON.parse(process.env.REACT_APP_ENABLE_BUNDLE_ANALYZER) || false;
 
       config.plugins = [
         ...config.plugins,
         config.mode === 'development' && new ReactRefreshWebpackPlugin(),
         new LodashModuleReplacementPlugin({
-          shorthands: true,
-          collections: true,
-          paths: true,
-          cloning: true,
+          currying: true,
+          flattening: true,
+          placeholders: true,
         }),
         enableBundleAnalyzer === true &&
           new BundleAnalyzerPlugin({
@@ -35,5 +33,6 @@ module.exports = [
       return config;
     },
   },
+  ['use-postcss-config'],
   logConfig,
 ];

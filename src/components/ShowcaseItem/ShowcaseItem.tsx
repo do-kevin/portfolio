@@ -74,7 +74,9 @@ export const ShowcaseItem = (props) => {
       onClick={onClick}
       className={`showcaseItem rounded ${
         display ? 'fade-in' : 'fade-out'
-      } mx-2 ${className || ''}`}
+      } mx-2 ${
+        className || ''
+      } hover:text-secondary-theme-1 transition duration-200 ease-in-out`}
       justify="center"
       as="div"
     >
@@ -92,7 +94,7 @@ export const ShowcaseItem = (props) => {
         align="center"
         pad="small"
       >
-        <Box className="text-3xl font-bold text-left leading-none text-center">
+        <Box className="text-4xl leading-none text-center font-titilliumWeb">
           {item.name}
         </Box>
       </Box>

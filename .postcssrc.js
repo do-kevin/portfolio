@@ -1,13 +1,14 @@
 const tailwindcss = require('tailwindcss');
 const postcssPresetEnv = require('postcss-preset-env');
+const tailwindConfig = require('./tailwind.config');
 
 module.exports = {
   map: true,
   plugins: [
-    tailwindcss('./tailwind.config.js'),
+    tailwindcss(tailwindConfig),
     require('autoprefixer'),
     postcssPresetEnv({
-      stage: 2,
+      stage: 0,
     }),
   ],
 };
