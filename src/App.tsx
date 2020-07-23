@@ -4,7 +4,7 @@ import { imported } from 'react-imported-component/macro';
 
 const Home = imported(() => import('screens/Home'));
 
-class App extends Component {
+export class App extends Component {
   render() {
     // Checks if homepage in package.json exists
     const basename = process.env.PUBLIC_URL || undefined;
@@ -12,11 +12,9 @@ class App extends Component {
     return (
       <Router basename={basename}>
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route path="/" component={Home} />
         </Switch>
       </Router>
     );
   }
 }
-
-export default App;

@@ -1,34 +1,55 @@
-import React, { useState, useEffect, Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Image } from 'grommet';
-import { Carousel } from 'react-responsive-carousel';
 import styled from 'styled-components';
-import { useSpring, animated } from 'react-spring';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import { render } from '@testing-library/react';
 
-class ShowcaseItem extends Component<{
-  index: any;
-  offsetY: any;
-  part: any;
-  item: any;
-  moveToSlide: any;
-  showcaseLength: any;
-}> {
-  state = {
-    alreadyMoved: false,
+const bp1 = '48em'; // 768px
+const bp2 = '160em'; // 2560px
+const bp3 = '240em'; // 3840px
+
+const mq1 = `only screen and (min-width: ${bp1})`;
+const mq2 = `only screen and (min-width: ${bp2})`;
+const mq3 = `only screen and (min-width: ${bp3})`;
+
+const StyledBox = styled(Box).attrs((props: any) => {
+  return {
+    className: `showcaseItem rounded mx-2 hover:text-secondary-theme-1 transition duration-200 ease-in-out text-center ${
+      props ? '' : ''
+    }`,
   };
+})`
+  @media ${mq1} {
+    width: 40rem;
+  }
+  @media ${mq2} {
+    width: 50rem;
+  }
+  @media ${mq3} {
+    width: 60rem;
+  }
 
-  render() {
-    const {
-      index,
-      offsetY,
-      part,
-      item,
-      moveToSlide,
-      showcaseLength,
-    } = this.props;
-    const { alreadyMoved } = this.state;
+  .showcaseItem {
+    &__figure {
+      height: 100%;
+      width: 100%;
+    }
+  }
+`;
 
+export const ShowcaseItem = (props: any) => {
+  const {
+    index,
+    offsetY,
+    part,
+    item,
+    moveToSlide,
+    showcaseLength,
+    currentSlide,
+    onClick,
+  } = props;
+  const [display, setDisplay] = useState(false);
+
+  useEffect(() => {
+    let alreadyMoved = false;
     const target = index * part;
     const threshold = target ? target * 0.1 : 0;
     let maxThreshold = part ? Math.round(target + threshold) : 0;
@@ -54,59 +75,58 @@ class ShowcaseItem extends Component<{
     if (offsetY >= minThreshold && offsetY <= maxThreshold) {
       if (!alreadyMoved) {
         moveToSlide(index);
-        this.setState({ ...this.state, alreadyMoved: true });
+        alreadyMoved = true;
+        setDisplay(true);
       }
     } else {
       if (alreadyMoved) {
-        this.setState({ ...this.state, alreadyMoved: false });
+        alreadyMoved = false;
+        setDisplay(false);
       }
     }
-    return (
+
+    if (currentSlide === index) {
+      setDisplay(true);
+    } else {
+      setDisplay(false);
+    }
+  }, [
+    offsetY,
+    currentSlide,
+    showcaseLength,
+    index,
+    part,
+    moveToSlide,
+    display,
+  ]);
+
+  return (
+    <StyledBox
+      basis="auto"
+      onClick={onClick}
+      justify="center"
+      className={`${
+        display ? 'fade-in animation-500ms' : 'fade-out animation-1s'
+      } ${props.className || ''}`}
+    >
+      <figure className="shadow-lg rounded showcaseItem__figure">
+        <Image
+          className="rounded showcaseItem__image"
+          fit="contain"
+          src={item.image}
+        />
+      </figure>
       <Box
+        as="footer"
+        direction="row"
         justify="center"
-        key={'showcaseItem__' + index}
-        as="div"
-        style={{ maxWidth: '30rem', height: '25rem' }}
-        className={
-          offsetY >= minThreshold && offsetY <= maxThreshold
-            ? 'fade-in'
-            : 'fade-out'
-        }
+        align="center"
+        pad="small"
       >
-        <figure
-          style={{ height: 'auto' }}
-          className={`${
-            offsetY >= minThreshold && offsetY <= maxThreshold ? 'test' : ''
-          } mb-4 rounded`}
-        >
-          <Image
-            className="rounded"
-            fit="cover"
-            src={'https://i.imgur.com/xyiNfa9.png'}
-          />
-        </figure>
-        <Box as="footer" direction="row" justify="between">
-          <Box
-            className="text-3xl font-bold text-left leading-none"
-            background={
-              offsetY >= minThreshold && offsetY <= maxThreshold
-                ? 'status-ok'
-                : 'status-critical'
-            }
-          >
-            {item.name}
-          </Box>
-          <Box direction="row" className="text-gray-400">
-            <span>REACT</span>
-            <span>SCSS</span>
-          </Box>
-        </Box>
-        <Box>
-          {minThreshold} to {maxThreshold}
+        <Box className="text-4xl leading-none text-center font-titilliumWeb">
+          {item.name}
         </Box>
       </Box>
-    );
-  }
-}
-
-export default ShowcaseItem;
+    </StyledBox>
+  );
+};

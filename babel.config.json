@@ -1,4 +1,4 @@
 {
   "presets": ["react-app", ["@babel/env", { "targets": { "node": 6 } }]],
-  "plugins": [["babel-plugin-styled-components"], "lodash"]
+  "plugins": [["babel-plugin-styled-components"], "lodash", "macros"]
 }

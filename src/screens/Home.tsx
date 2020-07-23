@@ -1,24 +1,37 @@
 import React, { Component } from 'react';
-import { Grommet, grommet, Grid, Box, Button } from 'grommet';
+import { Route, NavLink } from 'react-router-dom';
+import { Grommet, Grid, Box } from 'grommet';
 import { animateScroll as scroll } from 'react-scroll';
-import { ShowcaseCarousel } from 'components';
-import { useScrollPosition } from 'hooks/useScrollPosition';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBriefcase, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import { imported } from 'react-imported-component/macro';
+import { ShowcaseCarousel, MouseScrollIcon, ShowcaseList } from 'components';
+import { useScrollPosition, useIsScrolling } from 'hooks';
+import { theme as MyGrommetTheme } from 'theme';
 import showcase from 'showcase.json';
+import { colors } from 'theme';
+
+const Portfolio = imported(() => import('screens/Portfolio'));
+const About = imported(() => import('screens/About'));
+const ShowcaseLayer = imported(() => import('components/ShowcaseLayer'));
 
 const showcaseModifier = 7;
 
-class HomeClass extends Component<{ useScrollPosition: number[] }> {
+class HomeClass extends Component<{
+  useScrollPosition: number[];
+  location: any;
+  useIsScrolling: boolean[];
+}> {
   state = {
     availableScrolling: 0,
     currentSlide: 0,
-  };
-
-  moveToNextSlide = () => {
-    this.setState({ ...this.state, currentSlide: this.state.currentSlide + 1 });
-  };
-
-  moveToPrevSlide = () => {
-    this.setState({ ...this.state, currentSlide: this.state.currentSlide - 1 });
+    showPortfolioItem: false,
+    currentInfo: {
+      name: '',
+      description: '',
+      image: undefined,
+      technology: [],
+    },
   };
 
   moveToSlide = (index: number) => {
@@ -26,11 +39,10 @@ class HomeClass extends Component<{ useScrollPosition: number[] }> {
   };
 
   componentDidMount() {
-    // scroll.scrollToTop();
+    scroll.scrollToTop();
     const scrollHeight = document.body.scrollHeight;
 
-    let scrollArea =
-      (scrollHeight * (showcase.length * showcaseModifier)) / 69 - 9;
+    let scrollArea = (scrollHeight * (showcase.length * showcaseModifier)) / 60;
     scrollArea = Math.round(scrollArea);
 
     this.setState(
@@ -40,60 +52,135 @@ class HomeClass extends Component<{ useScrollPosition: number[] }> {
     );
   }
 
+  openPortfolioItem = (showcase) => {
+    let newState = { ...this.state, showPortfolioItem: true };
+    if (showcase) {
+      newState = { ...newState, currentInfo: showcase };
+    }
+    this.setState(newState);
+  };
+
+  closePortfolioItem = () => {
+    this.setState({ ...this.state, showPortfolioItem: false, currentInfo: {} });
+  };
+
   render() {
-    const { currentSlide, availableScrolling } = this.state;
-    const { useScrollPosition } = this.props;
+    const {
+      currentSlide,
+      availableScrolling,
+      showPortfolioItem,
+      currentInfo,
+    } = this.state;
+    const { useScrollPosition, useIsScrolling, location } = this.props;
+    const { pathname } = location;
     const [, , , offsetY] = useScrollPosition;
+    const [isScrolling] = useIsScrolling;
 
     return (
       <>
-        <Grommet full theme={grommet}>
+        <Grommet full theme={MyGrommetTheme}>
+          {showPortfolioItem && (
+            <ShowcaseLayer
+              showcase={currentInfo}
+              onClose={() => this.closePortfolioItem()}
+            />
+          )}
           <Grid
             fill="vertical"
             columns={['flex', '5rem']}
             className="w-full h-full fixed top-0"
           >
-            <Box as="main" background="accent-1" fill responsive>
-              <Grid rows={['xxsmall', 'flex']} fill="vertical">
-                <Box
-                  as="header"
-                  background="dark-2"
-                  pad="small"
-                  justify="center"
-                >
-                  Kevin Do
-                  <div>{Math.round(offsetY)}</div>
-                </Box>
-                <ShowcaseCarousel
-                  moveToSlide={this.moveToSlide}
-                  currentSlide={currentSlide}
-                  offsetY={offsetY}
-                  availableScrolling={availableScrolling}
-                  showcase={showcase}
-                />
+            <Box as="main" fill background="primary-theme-1">
+              <Grid rows={['flex']} fill="vertical">
+                <Route exact path="/">
+                  <>
+                    <ShowcaseList
+                      showcase={showcase}
+                      offsetY={offsetY}
+                      openPortfolioItem={this.openPortfolioItem}
+                    />
+                    <ShowcaseCarousel
+                      moveToSlide={this.moveToSlide}
+                      currentSlide={currentSlide}
+                      offsetY={offsetY}
+                      availableScrolling={availableScrolling}
+                      showcase={showcase}
+                      openPortfolioItem={this.openPortfolioItem}
+                    />
+                  </>
+                </Route>
+                <Route exact path="/portfolio">
+                  <Portfolio
+                    offsetY={offsetY}
+                    availableScrolling={availableScrolling}
+                    showcase={showcase}
+                    openPortfolioItem={this.openPortfolioItem}
+                  />
+                </Route>
+                <Route exact path="/about">
+                  <About />
+                </Route>
               </Grid>
             </Box>
-            <Box as="nav" background="dark-3">
-              <Grid rows={['xxsmall', 'flex', 'xxsmall']} fill>
-                <Box>Portfolio</Box>
+            <Box
+              as="nav"
+              background="primary-theme-2"
+              border={{
+                color: 'quaternary-theme-1',
+                side: 'left',
+                size: 'xsmall',
+                style: 'solid',
+              }}
+            >
+              <Grid rows={['xsmall', 'flex', 'xsmall']} fill>
                 <Box justify="center" align="center">
-                  <Button onClick={() => this.moveToNextSlide()}>Up</Button>
-                  <Button onClick={() => this.moveToPrevSlide()}>Down</Button>
+                  <NavLink
+                    exact
+                    to="/"
+                    className="text-white w-full h-full flex justify-center items-center text-3xl focus:shadow-outline hover:text-secondary-theme-1 transition duration-200 ease-in-out font-titilliumWeb"
+                    activeStyle={{ color: colors['secondary-theme-1'] }}
+                  >
+                    KD
+                  </NavLink>
                 </Box>
-                <Box>Contact</Box>
+                <Box justify="center" align="center">
+                  <NavLink
+                    exact
+                    to="/about"
+                    className="text-white w-full py-4 flex justify-center items-center text-3xl focus:shadow-outline hover:text-secondary-theme-1 transition duration-200 ease-in-out"
+                    activeStyle={{ color: colors['secondary-theme-1'] }}
+                  >
+                    <FontAwesomeIcon icon={faInfoCircle} />
+                  </NavLink>
+                  <MouseScrollIcon
+                    style={{ height: '3em' }}
+                    isScrolling={isScrolling}
+                  />
+                  <NavLink
+                    exact
+                    to="/portfolio"
+                    className="text-white w-full py-4 flex justify-center items-center text-3xl focus:shadow-outline hover:text-secondary-theme-1 transition duration-200 ease-in-out"
+                    activeStyle={{ color: colors['secondary-theme-1'] }}
+                  >
+                    <FontAwesomeIcon icon={faBriefcase} />
+                  </NavLink>
+                </Box>
+                <Box justify="center" align="center"></Box>
               </Grid>
             </Box>
           </Grid>
         </Grommet>
-        <Box
-          style={{
-            height:
-              showcase && showcase.length
-                ? `${showcase.length * showcaseModifier}rem`
-                : 0,
-          }}
-          className="w-2"
-        ></Box>
+        {(pathname === '/' || pathname === '/portfolio') && (
+          <Box
+            style={{
+              height:
+                showcase && showcase.length
+                  ? `${showcase.length * showcaseModifier}rem`
+                  : 0,
+            }}
+            className="w-2"
+          />
+        )}
       </>
     );
   }
@@ -101,5 +188,6 @@ class HomeClass extends Component<{ useScrollPosition: number[] }> {
 
 export default function Home(props) {
   const uSP = useScrollPosition();
-  return <HomeClass {...props} useScrollPosition={uSP} />;
+  const uIS = useIsScrolling();
+  return <HomeClass {...props} useScrollPosition={uSP} useIsScrolling={uIS} />;
 }
