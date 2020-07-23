@@ -1,8 +1,41 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Image } from 'grommet';
-import './ShowcaseItem.scss';
+import styled from 'styled-components';
 
-export const ShowcaseItem = (props) => {
+const bp1 = '48em'; // 768px
+const bp2 = '160em'; // 2560px
+const bp3 = '240em'; // 3840px
+
+const mq1 = `only screen and (min-width: ${bp1})`;
+const mq2 = `only screen and (min-width: ${bp2})`;
+const mq3 = `only screen and (min-width: ${bp3})`;
+
+const StyledBox = styled(Box).attrs((props: any) => {
+  return {
+    className: `showcaseItem rounded mx-2 hover:text-secondary-theme-1 transition duration-200 ease-in-out text-center ${
+      props ? '' : ''
+    }`,
+  };
+})`
+  @media ${mq1} {
+    width: 40rem;
+  }
+  @media ${mq2} {
+    width: 50rem;
+  }
+  @media ${mq3} {
+    width: 60rem;
+  }
+
+  .showcaseItem {
+    &__figure {
+      height: 100%;
+      width: 100%;
+    }
+  }
+`;
+
+export const ShowcaseItem = (props: any) => {
   const {
     index,
     offsetY,
@@ -12,7 +45,6 @@ export const ShowcaseItem = (props) => {
     showcaseLength,
     currentSlide,
     onClick,
-    className,
   } = props;
   const [display, setDisplay] = useState(false);
 
@@ -69,16 +101,13 @@ export const ShowcaseItem = (props) => {
   ]);
 
   return (
-    <Box
+    <StyledBox
       basis="auto"
       onClick={onClick}
-      className={`showcaseItem rounded ${
-        display ? 'fade-in' : 'fade-out'
-      } mx-2 ${
-        className || ''
-      } hover:text-secondary-theme-1 transition duration-200 ease-in-out`}
       justify="center"
-      as="div"
+      className={`${
+        display ? 'fade-in animation-500ms' : 'fade-out animation-1s'
+      } ${props.className || ''}`}
     >
       <figure className="shadow-lg rounded showcaseItem__figure">
         <Image
@@ -98,6 +127,6 @@ export const ShowcaseItem = (props) => {
           {item.name}
         </Box>
       </Box>
-    </Box>
+    </StyledBox>
   );
 };

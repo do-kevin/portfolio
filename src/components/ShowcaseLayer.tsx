@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
 
-import LoadingImg from 'assets/loadingImg.gif';
+import LoadingImg from 'assets/gifs/loadingImg.gif';
 
 const CloseButton = styled(Button)`
   background-color: gray;
@@ -45,9 +45,11 @@ const ShowcaseLayer = (props) => {
         </span>
         <Img
           placeholder={LoadingImg}
-          src={showcase ? showcase.image : undefined}
-          debounce={500}
-          className="rounded-lg mb-4 shadow-md object-contain"
+          src={(showcase && showcase.image) || undefined}
+          debounce={5000}
+          className={`rounded-lg mb-4 shadow-md  ${
+            showcase && showcase.image ? 'object-contain' : 'object-fill'
+          }`}
           style={{ minHeight: 563 }}
         />
         <Grid

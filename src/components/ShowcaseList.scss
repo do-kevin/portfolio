@@ -1,9 +1,0 @@
-$bp-1: 48em; // 768px
-$mq-1: '(max-width: #{$bp-1})';
-
-.showcaseList {
-  display: none;
-  @media only screen and #{$mq-1} {
-    display: block;
-  }
-}

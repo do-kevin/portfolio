@@ -4,7 +4,8 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane, faFileAlt } from '@fortawesome/free-solid-svg-icons';
 import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
-const Resume = require('documents/kevindo_resume_march2020.docx');
+
+const Resume = require('assets/documents/kevindo_resume_march2020.docx');
 
 const StyledBox = styled(Box)`
   max-width: 720px;

@@ -15,6 +15,7 @@ export const colors = {
   'primary-theme-1': convertHSL2RGB('hsl(230,61%,14%)'),
   'primary-theme-2': convertHSL2RGB('hsl(230,61%,17%)'),
   'secondary-theme-1': convertHSL2RGB('hsl(189,86%,53%)'),
+  'secondary-theme-2': convertHSL2RGB('hsl(189,86%,43%)'),
   'tertiary-theme-1': convertHSL2RGB('hsl(230,87%,59%)'),
   'quaternary-theme-1': convertHSL2RGB('hsl(186,49%,92%)'),
 };
