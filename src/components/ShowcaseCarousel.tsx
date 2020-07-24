@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box } from 'grommet';
 import { Carousel } from 'react-responsive-carousel';
 import styled from 'styled-components';
@@ -27,7 +27,7 @@ const StyledCarousel = styled(Carousel)`
   }
 `;
 
-const Counter = styled.div.attrs({
+const StyledCounter = styled.div.attrs({
   className:
     'counter w-full text-center pt-1 pb-6 text-2xl text-quaternary-theme-1',
 })`
@@ -39,6 +39,18 @@ const Counter = styled.div.attrs({
     font-size: 1rem;
   }
 `;
+
+const Counter = (props) => {
+  const { current, total } = props;
+
+  useEffect(() => {}, [current, total]);
+
+  return (
+    <StyledCounter>
+      {current} / {total}
+    </StyledCounter>
+  );
+};
 
 export const ShowcaseCarousel = (props) => {
   let {
@@ -100,9 +112,7 @@ export const ShowcaseCarousel = (props) => {
           );
         })}
       </StyledCarousel>
-      <Counter>
-        {current} / {total}
-      </Counter>
+      <Counter current={current} total={total} />
     </Box>
   );
 };

@@ -1,3 +1,4 @@
+export const bp7 = '18em'; // 342px
 export const bp6 = '22em'; // 342px
 export const bp5 = '24em'; // ~388px
 export const bp0 = '32em'; // ~500px

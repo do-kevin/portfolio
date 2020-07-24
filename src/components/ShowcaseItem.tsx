@@ -17,6 +17,7 @@ const CarouselBox = styled(Box).attrs((props: any) => {
     }`,
   };
 })`
+  transition: width 200ms;
   @media ${mqMin1} {
     width: 40rem;
   }
