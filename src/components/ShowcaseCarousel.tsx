@@ -3,12 +3,11 @@ import { Box } from 'grommet';
 import { Carousel } from 'react-responsive-carousel';
 import styled from 'styled-components';
 import { ShowcaseItem } from 'components';
+import { mqMax1, mqMaxHeight2 } from 'constants/mediaQueries';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
-const bp1 = '48em';
-
 const StyledCarousel = styled(Carousel)`
-  @media only screen and (max-width: ${bp1}) {
+  @media ${mqMax1} {
     display: none;
   }
   .carousel.carousel-slider {
@@ -25,6 +24,19 @@ const StyledCarousel = styled(Carousel)`
     align-items: center;
     height: 100%;
     background: none;
+  }
+`;
+
+const Counter = styled.div.attrs({
+  className:
+    'counter w-full text-center pt-1 pb-6 text-2xl text-quaternary-theme-1',
+})`
+  @media ${mqMax1} {
+    display: none;
+  }
+  @media ${mqMaxHeight2} {
+    padding-top: 0;
+    font-size: 1rem;
   }
 `;
 
@@ -74,6 +86,7 @@ export const ShowcaseCarousel = (props) => {
         {showcase.map((item, index) => {
           return (
             <ShowcaseItem
+              type="carousel"
               onClick={() => openPortfolioItem(item)}
               currentSlide={currentSlide}
               key={'showcaseItem__' + index}
@@ -87,9 +100,9 @@ export const ShowcaseCarousel = (props) => {
           );
         })}
       </StyledCarousel>
-      <div className="w-full text-center pt-1 pb-6 text-2xl">
+      <Counter>
         {current} / {total}
-      </div>
+      </Counter>
     </Box>
   );
 };
