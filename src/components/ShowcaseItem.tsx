@@ -97,7 +97,6 @@ const ShowcasePreview = (props: any) => {
         <Img
           placeholder={LoadingImg}
           src={image || undefined}
-          debounce={200}
           className={`object-contain rounded showcaseItem__image`}
           alt={name + ' image'}
         />

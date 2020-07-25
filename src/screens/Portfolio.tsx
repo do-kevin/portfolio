@@ -91,7 +91,6 @@ const Portfolio = (props) => {
               <Img
                 placeholder={LoadingImg}
                 src={s.image || undefined}
-                debounce={200}
                 className={`object-cover mosiacShowcase__itemImage`}
                 alt={s.name + ' image'}
               />
@@ -116,7 +115,6 @@ const Portfolio = (props) => {
               <Img
                 placeholder={LoadingImg}
                 src={s.image || undefined}
-                debounce={200}
                 className={`object-cover mosiacShowcase__itemImage`}
                 alt={s.name + ' image'}
               />
