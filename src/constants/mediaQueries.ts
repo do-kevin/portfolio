@@ -5,6 +5,7 @@ export const mqMin2 = `only screen and (min-width: ${bp2})`;
 export const mqMin3 = `only screen and (min-width: ${bp3})`;
 
 export const mqMax1 = `only screen and (max-width: ${bp1})`;
+export const mqMax2 = `only screen and (max-width: ${bp6})`;
 
 export const mqMaxHeight3 = `only screen and (max-height: ${bp7})`;
 

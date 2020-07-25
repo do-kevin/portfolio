@@ -9,6 +9,7 @@ import {
   mqMaxHeight0,
   mqMaxHeight2,
 } from 'constants/mediaQueries';
+import _showcase from 'showcase.json';
 
 const CarouselBox = styled(Box).attrs((props: any) => {
   return {
@@ -56,27 +57,31 @@ const CarouselBox = styled(Box).attrs((props: any) => {
   }
 `;
 
+const modifier = 17 * ((_showcase && _showcase.length) || 0);
+const bph1 = modifier;
+const mqh1 = `only screen and (max-height: ${bph1}em)`;
+
 const ListBox = styled(Box).attrs((props: any) => {
   return {
-    className: `showcaseItem rounded mx-2 hover:text-secondary-theme-1 transition duration-200 ease-in-out text-center ${
+    className: `showcaseItem rounded mx-auto hover:text-secondary-theme-1 transition duration-200 ease-in-out text-center ${
       props ? '' : ''
     }`,
   };
 })`
-  @media ${mqMin1} {
-    width: 40rem;
-  }
-  @media ${mqMin2} {
-    width: 50rem;
-  }
-  @media ${mqMin3} {
-    width: 60rem;
+  @media ${mqh1} {
+    padding: 0 0.5rem;
+    width: 100%;
   }
 
   .showcaseItem {
     &__figure {
       height: 100%;
       width: 100%;
+    }
+    &__name {
+      @media ${mqh1} {
+        font-size: 90%;
+      }
     }
   }
 `;
