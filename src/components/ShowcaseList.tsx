@@ -17,6 +17,7 @@ export const ShowcaseList = (props) => {
     <StyledDiv style={{ transform: `translateY(-${offsetY}px)` }}>
       {showcase.map((s, index) => (
         <ShowcaseItem
+          type="list"
           item={s}
           key={'itemInList' + index}
           className="mb-4"

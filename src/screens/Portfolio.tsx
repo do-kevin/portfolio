@@ -5,14 +5,41 @@ import showcase from 'showcase.json';
 
 const curve = '1rem';
 
-const StyledBox = styled(Box)`
+const bp1 = '32em';
+
+const mq1 = `only screen and (max-height: ${bp1})`;
+
+const StyledBox = styled(Box).attrs({
+  className: 'pt-10 rounded mosiacShowcase',
+})`
+  @media ${mq1} {
+    padding-top: 0;
+  }
   .mosiacShowcase {
+    &__heading:first-child {
+      @media ${mq1} {
+        font-size: 2rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+      }
+    }
+    &__heading:not(:first-child) {
+      @media ${mq1} {
+        font-size: 2rem;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+      }
+    }
     &__item {
       border-radius: ${curve};
       width: 49.7%;
     }
     &__item--featured {
       width: 100%;
+      @media ${mq1} {
+        width: 65%;
+        margin: auto;
+      }
     }
     &__itemImage {
       border-top-left-radius: ${curve};
@@ -36,7 +63,6 @@ const Portfolio = (props) => {
     <StyledBox
       direction="column"
       margin="auto"
-      className="pt-10 rounded mosiacShowcase"
       style={{ transform: `translateY(-${offsetY}px)` }}
     >
       <Box
@@ -46,7 +72,7 @@ const Portfolio = (props) => {
         fill
         style={{ maxWidth: 720 }}
       >
-        <span className="block text-5xl w-full text-center mt-12 mb-8 font-titilliumWeb">
+        <span className="mosiacShowcase__heading block text-5xl w-full text-center mt-12 mb-8 font-titilliumWeb">
           WORK
         </span>
         {showcase
@@ -69,7 +95,7 @@ const Portfolio = (props) => {
               </span>
             </Box>
           ))}
-        <span className="block text-5xl w-full text-center mt-12 mb-8 font-titilliumWeb">
+        <span className="mosiacShowcase__heading block text-5xl w-full text-center mt-12 mb-8 font-titilliumWeb">
           PROJECTS
         </span>
         {showcase

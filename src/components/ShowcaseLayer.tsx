@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
 
-import LoadingImg from 'assets/gifs/loadingImg.gif';
+import LoadingImg from 'assets/gifs/gradientLoading.gif';
 
 const CloseButton = styled(Button)`
   background-color: gray;
@@ -20,43 +20,78 @@ const CloseButton = styled(Button)`
   }
 `;
 
+const bpw1 = '56em';
+const bp2 = '24em';
+const mq1 = `only screen and (max-width: ${bpw1})`;
+const mq2 = `only screen and (max-width: ${bp2})`;
+
+const StyledLayer = styled(Layer).attrs({
+  className: 'showcaseLayer overflow-auto',
+})`
+  .showcaseLayer {
+    &__wrapper {
+      max-width: ${bpw1};
+    }
+    &__closeButton {
+    }
+    &__name {
+      font-size: 4rem;
+      margin-top: 3rem;
+      margin-bottom: 3rem;
+      @media ${mq1} {
+        margin: 0;
+      }
+      @media ${mq2} {
+        font-size: 2.5rem;
+      }
+    }
+    &__image {
+      min-height: 35em;
+      @media ${mq1} {
+        min-height: auto;
+      }
+    }
+    &__content {
+      @media ${mq2} {
+        font-size: 0.825rem;
+      }
+    }
+  }
+`;
+
 const ShowcaseLayer = (props) => {
   const { onClose, showcase } = props;
   return (
-    <Layer
+    <StyledLayer
       full
       animation="fadeIn"
       onEsc={onClose}
       onClickOutside={onClose}
-      className="overflow-auto"
     >
       <Box
         margin="auto"
         direction="column"
         style={{ maxWidth: 900 }}
-        className="pb-4"
+        className="pb-4 showcaseLayer__wrapper"
         fill
       >
-        <CloseButton onClick={onClose}>
+        <CloseButton className="showcaseLayer__closeBtn" onClick={onClose}>
           <FontAwesomeIcon icon={faTimes} className="block m-auto" />
         </CloseButton>
-        <span className="block text-6xl font-bold my-12 text-center leading-tight font-titilliumWeb">
+        <span className="showcaseLayer__name block font-bold text-center leading-tight font-titilliumWeb">
           {showcase ? showcase && showcase.name : ''}
         </span>
         <Img
           placeholder={LoadingImg}
           src={(showcase && showcase.image) || undefined}
-          debounce={5000}
-          className={`rounded-lg mb-4 shadow-md  ${
-            showcase && showcase.image ? 'object-contain' : 'object-fill'
-          }`}
-          style={{ minHeight: 563 }}
+          debounce={500}
+          className={`showcaseLayer__image rounded-lg mb-4 shadow-md object-contain`}
         />
         <Grid
           fill="vertical"
           columns={['flex', 'auto']}
           gap="small"
-          className="pb-6"
+          className="pb-6 showcaseLayer__content"
         >
           <Box
             className="p-3 rounded-lg"
@@ -92,7 +127,7 @@ const ShowcaseLayer = (props) => {
           </Box>
         </Grid>
       </Box>
-    </Layer>
+    </StyledLayer>
   );
 };
 

@@ -5,11 +5,21 @@ import { animateScroll as scroll } from 'react-scroll';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBriefcase, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { imported } from 'react-imported-component/macro';
+import styled from 'styled-components';
 import { ShowcaseCarousel, MouseScrollIcon, ShowcaseList } from 'components';
 import { useScrollPosition, useIsScrolling } from 'hooks';
-import { theme as MyGrommetTheme } from 'theme';
+import { theme as MyGrommetTheme, colors } from 'theme';
+import { mqMaxHeight0, mqMaxHeight3 } from 'constants/mediaQueries';
 import showcase from 'showcase.json';
-import { colors } from 'theme';
+
+const StyledGrid = styled(Grid)`
+  @media ${mqMaxHeight3} {
+    grid-template-rows: 1.825em 1fr 0 !important;
+  }
+  @media ${mqMaxHeight0} {
+    grid-template-rows: 48px 1fr 48px;
+  }
+`;
 
 const Portfolio = imported(() => import('screens/Portfolio'));
 const About = imported(() => import('screens/About'));
@@ -132,7 +142,7 @@ class HomeClass extends Component<{
                 style: 'solid',
               }}
             >
-              <Grid rows={['xsmall', 'flex', 'xsmall']} fill>
+              <StyledGrid rows={['xsmall', 'flex', 'xsmall']} fill>
                 <Box justify="center" align="center">
                   <NavLink
                     exact
@@ -166,7 +176,7 @@ class HomeClass extends Component<{
                   </NavLink>
                 </Box>
                 <Box justify="center" align="center"></Box>
-              </Grid>
+              </StyledGrid>
             </Box>
           </Grid>
         </Grommet>
