@@ -86,6 +86,7 @@ const ShowcaseLayer = (props) => {
           src={(showcase && showcase.image) || undefined}
           debounce={500}
           className={`showcaseLayer__image rounded-lg mb-4 shadow-md object-contain`}
+          alt={showcase ? showcase && showcase.name + ' image' : ''}
         />
         <Grid
           fill="vertical"

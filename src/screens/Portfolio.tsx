@@ -1,7 +1,10 @@
 import React from 'react';
-import { Box, Image } from 'grommet';
+import { Box } from 'grommet';
+import Img from 'react-cool-img';
 import styled from 'styled-components';
 import showcase from 'showcase.json';
+import LoadingImg from 'assets/gifs/gradientLoading.gif';
+import { AnyNsRecord } from 'dns';
 
 const curve = '1rem';
 
@@ -77,7 +80,7 @@ const Portfolio = (props) => {
         </span>
         {showcase
           .filter((s) => s.type === 'work')
-          .map((s, index) => (
+          .map((s: any, index) => (
             <Box
               onClick={() => openPortfolioItem(s)}
               key={'mosiacShowcaseItem__work' + index}
@@ -85,10 +88,12 @@ const Portfolio = (props) => {
                 s.featured ? 'mosiacShowcase__item--featured shadow-lg' : ''
               }`}
             >
-              <Image
+              <Img
+                placeholder={LoadingImg}
                 src={s.image || undefined}
-                fit="cover"
-                className="mosiacShowcase__itemImage"
+                debounce={200}
+                className={`object-cover mosiacShowcase__itemImage`}
+                alt={s.name + ' image'}
               />
               <span className="block relative text-white bg-black text-base mosiacShowcase__itemName">
                 {s.name}
@@ -100,7 +105,7 @@ const Portfolio = (props) => {
         </span>
         {showcase
           .filter((s) => s.type === 'project')
-          .map((s, index) => (
+          .map((s: any, index) => (
             <Box
               onClick={() => openPortfolioItem(s)}
               key={'mosiacShowcaseItem__project' + index}
@@ -108,10 +113,12 @@ const Portfolio = (props) => {
                 s.featured ? 'mosiacShowcase__item--featured shadow-lg' : ''
               }`}
             >
-              <Image
+              <Img
+                placeholder={LoadingImg}
                 src={s.image || undefined}
-                fit="cover"
-                className="mosiacShowcase__itemImage"
+                debounce={200}
+                className={`object-cover mosiacShowcase__itemImage`}
+                alt={s.name + ' image'}
               />
               <span className="block relative text-white bg-black text-base mosiacShowcase__itemName">
                 {s.name}

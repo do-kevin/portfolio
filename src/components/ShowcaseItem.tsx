@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Image } from 'grommet';
+import { Box } from 'grommet';
+import Img from 'react-cool-img';
 import styled from 'styled-components';
 import {
   mqMin1,
@@ -10,6 +11,7 @@ import {
   mqMaxHeight2,
 } from 'constants/mediaQueries';
 import _showcase from 'showcase.json';
+import LoadingImg from 'assets/gifs/gradientLoading.gif';
 
 const CarouselBox = styled(Box).attrs((props: any) => {
   return {
@@ -92,10 +94,12 @@ const ShowcasePreview = (props: any) => {
   return (
     <>
       <figure className="shadow-lg rounded showcaseItem__figure">
-        <Image
-          className="rounded showcaseItem__image"
-          fit="contain"
+        <Img
+          placeholder={LoadingImg}
           src={image || undefined}
+          debounce={200}
+          className={`object-contain rounded showcaseItem__image`}
+          alt={name + ' image'}
         />
       </figure>
       <Box
