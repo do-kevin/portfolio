@@ -1,4 +1,4 @@
-import React, { AnchorHTMLAttributes } from 'react';
+import React, { AnchorHTMLAttributes, AllHTMLAttributes } from 'react';
 import styled from 'styled-components';
 
 interface AnchorProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
@@ -19,10 +19,20 @@ const Anchor: React.FC<AnchorProps> = (props) => {
   );
 };
 
-const Links = (props) => {
+interface LinksProps {
+  links: {
+    live?: string;
+    github?: string;
+    github_client?: string;
+    github_api?: string;
+  };
+  domProps?: AllHTMLAttributes<HTMLElement>;
+}
+
+const Links: React.FC<LinksProps> = (props) => {
   const { links, domProps } = props;
   return (
-    <section className="flex flex-col" {...domProps}>
+    <section {...domProps} className="flex flex-col">
       {links.live && <Anchor href={links.live} text="VISIT WEBSITE" />}
       {links.github && <Anchor href={links.github} text="VISIT GITHUB REPO" />}
       {links.github_client && (
