@@ -1,0 +1,85 @@
+{
+  "name": "portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.29",
+    "@fortawesome/free-brands-svg-icons": "^5.14.0",
+    "@fortawesome/free-solid-svg-icons": "^5.13.1",
+    "@fortawesome/react-fontawesome": "^0.1.11",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
+    "@types/jest": "^24.9.1",
+    "@types/lodash": "^4.14.157",
+    "@types/node": "^12.12.47",
+    "@types/react": "^16.9.38",
+    "@types/react-dom": "^16.9.8",
+    "@types/react-router-dom": "^5.1.5",
+    "@types/styled-components": "^5.1.0",
+    "@welldone-software/why-did-you-render": "^4.2.7",
+    "autoprefixer": "^9.8.4",
+    "colors-convert": "^1.2.4",
+    "dayjs": "^1.8.28",
+    "grommet": "^2.14.0",
+    "lodash": "^4.17.15",
+    "postcss-cli": "^7.1.1",
+    "react": "^16.13.1",
+    "react-cool-img": "^1.2.1",
+    "react-dom": "^16.13.1",
+    "react-imported-component": "^6.3.5",
+    "react-responsive-carousel": "^3.2.9",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.1",
+    "react-scroll": "^1.8.0",
+    "styled-components": "^5.1.1",
+    "tailwindcss": "^1.4.6",
+    "twin.macro": "^1.6.0",
+    "typescript": "^3.7.5"
+  },
+  "scripts": {
+    "start": "rescripts start",
+    "build": "rescripts build",
+    "test": "rescripts test",
+    "postdeploy": "cd build && mv index.html 200.html",
+    "deploy": "surge --domain do.kevin.surge.sh"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "sideEffects": false,
+  "devDependencies": {
+    "@babel/cli": "^7.10.3",
+    "@babel/preset-env": "^7.10.3",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.3.3",
+    "@rescripts/cli": "^0.0.14",
+    "@rescripts/rescript-env": "^0.0.12",
+    "@rescripts/rescript-use-babel-config": "^0.0.10",
+    "@rescripts/rescript-use-tslint-config": "^0.0.7",
+    "@rescripts/utilities": "^0.0.7",
+    "babel-plugin-import": "^1.13.0",
+    "babel-plugin-imports": "^0.2.4",
+    "babel-plugin-lodash": "^3.3.4",
+    "babel-plugin-macros": "^2.8.0",
+    "babel-plugin-styled-components": "^1.10.7",
+    "lodash-webpack-plugin": "^0.11.5",
+    "node-sass": "^4.14.1",
+    "postcss-preset-env": "^6.7.0",
+    "prettier": "^2.0.5",
+    "react-refresh": "^0.8.3",
+    "rescript-use-postcss-config": "^1.0.0",
+    "webpack-bundle-analyzer": "^3.8.0"
+  }
+}
