@@ -13,7 +13,9 @@ module.exports = [
   {
     webpack: (config) => {
       const enableBundleAnalyzer =
-        JSON.parse(process.env.REACT_APP_ENABLE_BUNDLE_ANALYZER) || false;
+        (process.env.REACT_APP_ENABLE_BUNDLE_ANALYZER &&
+          JSON.parse(process.env.REACT_APP_ENABLE_BUNDLE_ANALYZER)) ||
+        false;
 
       config.optimization = {
         ...config.optimization,

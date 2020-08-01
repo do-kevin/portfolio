@@ -2,10 +2,15 @@ import React from 'react';
 import { Box, Heading, Paragraph, Anchor } from 'grommet';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPaperPlane, faFileAlt } from '@fortawesome/free-solid-svg-icons';
+import {
+  faPaperPlane,
+  faFileAlt,
+  faFilePdf,
+} from '@fortawesome/free-solid-svg-icons';
 import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 
-const Resume = require('assets/documents/kevindo_resume_march2020.docx');
+const Resume = require('assets/documents/kevindo_resume_august2020.docx');
+const ResumePDF = require('assets/documents/kevindo_resume_august2020.pdf');
 
 const bp1 = '24em';
 
@@ -78,6 +83,12 @@ const anchors = [
     label: 'Resume (.docx)',
     href: Resume,
   },
+  {
+    icon: faFilePdf,
+    label: 'Resume (.pdf)',
+    href: ResumePDF,
+    download: ResumePDF,
+  },
 ];
 
 const About = () => {
@@ -118,7 +129,7 @@ const About = () => {
         projects to life. Want to work together? Feel free to reach me.
       </Paragraph>
       <Box width="auto" className="about__links">
-        {anchors.map(({ label, href, icon }, idx) => (
+        {anchors.map(({ label, href, icon, download }, idx) => (
           <Box
             direction="row"
             margin={{ bottom: 'xsmall' }}
@@ -128,7 +139,16 @@ const About = () => {
               <FontAwesomeIcon icon={icon} />
             </Box>
             <Box width="auto">
-              <Anchor label={label} href={href} color="secondary-theme-1" />
+              {(download && (
+                <Anchor
+                  label={label}
+                  href={href}
+                  download={download}
+                  color="secondary-theme-1"
+                />
+              )) || (
+                <Anchor label={label} href={href} color="secondary-theme-1" />
+              )}
             </Box>
           </Box>
         ))}
