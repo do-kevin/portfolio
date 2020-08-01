@@ -15,6 +15,11 @@ module.exports = [
       const enableBundleAnalyzer =
         JSON.parse(process.env.REACT_APP_ENABLE_BUNDLE_ANALYZER) || false;
 
+      config.optimization = {
+        ...config.optimization,
+        usedExports: true,
+      };
+
       config.plugins = [
         ...config.plugins,
         config.mode === 'development' && new ReactRefreshWebpackPlugin(),
@@ -29,7 +34,6 @@ module.exports = [
             reportFilename: 'report.html',
           }),
       ].filter(Boolean);
-
       return config;
     },
   },

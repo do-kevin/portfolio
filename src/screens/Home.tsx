@@ -162,10 +162,7 @@ class HomeClass extends Component<{
                   >
                     <FontAwesomeIcon icon={faInfoCircle} />
                   </NavLink>
-                  <MouseScrollIcon
-                    style={{ height: '3em' }}
-                    isScrolling={isScrolling}
-                  />
+                  <MouseScrollIcon isScrolling={isScrolling} />
                   <NavLink
                     exact
                     to="/portfolio"
