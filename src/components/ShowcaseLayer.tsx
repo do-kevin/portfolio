@@ -4,7 +4,7 @@ import Img from 'react-cool-img';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
-
+import { Links } from 'components';
 import LoadingImg from 'assets/gifs/gradientLoading.gif';
 
 const CloseButton = styled(Button)`
@@ -36,8 +36,8 @@ const StyledLayer = styled(Layer).attrs({
     }
     &__name {
       font-size: 4rem;
-      margin-top: 3rem;
-      margin-bottom: 3rem;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
       @media ${mq1} {
         margin: 0;
       }
@@ -46,7 +46,7 @@ const StyledLayer = styled(Layer).attrs({
       }
     }
     &__image {
-      min-height: 35em;
+      min-height: 30em;
       @media ${mq1} {
         min-height: auto;
       }
@@ -107,6 +107,12 @@ const ShowcaseLayer = (props) => {
                 <p>{showcase.description}</p>
               </>
             )}
+            <div className="flex flex-col">
+              <span className="text-gray-500 font-titilliumWeb font-bold text-base">
+                Links
+              </span>
+              <Links links={showcase.links} />
+            </div>
           </Box>
           <Box
             align="end"

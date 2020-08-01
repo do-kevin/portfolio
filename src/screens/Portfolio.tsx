@@ -4,7 +4,6 @@ import Img from 'react-cool-img';
 import styled from 'styled-components';
 import showcase from 'showcase.json';
 import LoadingImg from 'assets/gifs/gradientLoading.gif';
-import { AnyNsRecord } from 'dns';
 
 const curve = '1rem';
 

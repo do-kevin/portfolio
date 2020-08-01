@@ -2,7 +2,7 @@
   {
     "name": "School Sector",
     "type": "work",
-    "image": "https://i.imgur.com/xyiNfa9.png",
+    "image": "https://i.imgur.com/gVGPD3u.png",
     "featured": true,
     "description": "An education app that provides courses and curriculums that students can enroll in. Students will be able to check their enrollments and statuses.",
     "technology": [
@@ -13,7 +13,13 @@
       "Chart.js",
       "Tailwind",
       "SCSS"
-    ]
+    ],
+    "links": {
+      "live": "https://school-sector.netlify.app",
+      "github": null,
+      "github_client": "https://github.com/do-kevin/SchoolSector-client",
+      "github_api": "https://github.com/do-kevin/SchoolSector-api"
+    }
   },
   {
     "name": "Monster Hunter World Builder",
@@ -28,7 +34,13 @@
       "Recharts",
       "Styled Components",
       "SCSS"
-    ]
+    ],
+    "links": {
+      "live": null,
+      "github": "https://github.com/do-kevin/monster-hunter-world-builder",
+      "github_client": null,
+      "github_api": null
+    }
   },
   {
     "name": "Zephyr Node",
@@ -36,6 +48,12 @@
     "image": "https://i.imgur.com/xyiNfa9.png",
     "featured": false,
     "description": "A productivity app that helps organize their notes, to-dos, reminders, and flashcard decks. Its unique feature is giving users the option to send reminders and flashcards as text messages.",
-    "technology": ["React", "Bootstrap", "Styled Components", "SCSS"]
+    "technology": ["React", "Bootstrap", "Styled Components", "SCSS"],
+    "links": {
+      "live": "https://zephyr-node.herokuapp.com",
+      "github": null,
+      "github_client": "https://github.com/do-kevin/Zephyr-Node",
+      "github_api": null
+    }
   }
 ]
