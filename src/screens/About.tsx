@@ -118,8 +118,12 @@ const About = () => {
         projects to life. Want to work together? Feel free to reach me.
       </Paragraph>
       <Box width="auto" className="about__links">
-        {anchors.map(({ label, href, icon }) => (
-          <Box direction="row" margin={{ bottom: 'xsmall' }}>
+        {anchors.map(({ label, href, icon }, idx) => (
+          <Box
+            direction="row"
+            margin={{ bottom: 'xsmall' }}
+            key={'anchor_' + idx}
+          >
             <Box width="xxsmall" justify="center" className="about__icons">
               <FontAwesomeIcon icon={icon} />
             </Box>

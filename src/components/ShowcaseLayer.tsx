@@ -128,7 +128,9 @@ const ShowcaseLayer = (props) => {
               {showcase &&
                 showcase.technology &&
                 showcase.technology.length &&
-                showcase.technology.map((t) => <li>{t}</li>)}
+                showcase.technology.map((t, idx) => (
+                  <li key={'tech_' + idx}>{t}</li>
+                ))}
             </ul>
           </Box>
         </Grid>

@@ -64,13 +64,11 @@ export const ShowcaseCarousel = (props) => {
     style,
   } = props;
 
-  const [onCurrentSlide, setOnCurrentSlide] = useState(0);
-  const [slides, setSlides] = useState({ current: 0, total: 0 });
+  const [currSlide, setCurrSlide] = useState(0);
+  const [totalSlides, setTotalSlides] = useState(0);
 
   offsetY = Math.round(offsetY);
   const part = Math.round(availableScrolling / showcase.length);
-
-  const { current, total } = slides;
 
   return (
     <Box as="main" className={`z-10 ${className}`} style={style}>
@@ -80,11 +78,13 @@ export const ShowcaseCarousel = (props) => {
         showThumbs={false}
         centerSlidePercentage={100}
         showStatus={true}
-        statusFormatter={(current, total) => {
+        statusFormatter={(_current, _total) => {
           setTimeout(() => {
-            if (onCurrentSlide !== current) {
-              setOnCurrentSlide(current);
-              setSlides({ current, total });
+            if (_current !== currSlide) {
+              setCurrSlide(_current);
+            }
+            if (_total !== totalSlides) {
+              setTotalSlides(_total);
             }
           }, 50);
           return '';
@@ -112,7 +112,9 @@ export const ShowcaseCarousel = (props) => {
           );
         })}
       </StyledCarousel>
-      <Counter current={current} total={total} />
+      <Counter current={currSlide} total={totalSlides} />
     </Box>
   );
 };
+
+export default React.memo(ShowcaseCarousel);

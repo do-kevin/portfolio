@@ -57,7 +57,7 @@ const StyledMouseScrollIcon = styled.span.attrs({
   }
 `;
 
-export const MouseScrollIcon = (props) => {
+const MouseScrollIcon = (props) => {
   const { className, style, isScrolling } = props;
 
   return (
@@ -76,3 +76,5 @@ export const MouseScrollIcon = (props) => {
     </StyledMouseScrollIcon>
   );
 };
+
+export default React.memo(MouseScrollIcon);

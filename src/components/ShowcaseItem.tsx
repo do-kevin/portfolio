@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Box } from 'grommet';
-import Img from 'react-cool-img';
 import styled from 'styled-components';
 import {
   mqMin1,
@@ -10,8 +9,8 @@ import {
   mqMaxHeight0,
   mqMaxHeight2,
 } from 'constants/mediaQueries';
+import { ShowcasePreview } from 'components';
 import _showcase from 'showcase.json';
-import LoadingImg from 'assets/gifs/gradientLoading.gif';
 
 const CarouselBox = styled(Box).attrs((props: any) => {
   return {
@@ -87,34 +86,6 @@ const ListBox = styled(Box).attrs((props: any) => {
     }
   }
 `;
-
-const ShowcasePreview = (props: any) => {
-  const { showcase } = props;
-  const { image, name } = showcase;
-  return (
-    <>
-      <figure className="shadow-lg rounded showcaseItem__figure">
-        <Img
-          placeholder={LoadingImg}
-          src={image || undefined}
-          className={`object-contain rounded showcaseItem__image`}
-          alt={name + ' image'}
-        />
-      </figure>
-      <Box
-        as="footer"
-        direction="row"
-        justify="center"
-        align="center"
-        pad="small"
-      >
-        <Box className="text-4xl leading-none text-center font-titilliumWeb showcaseItem__name">
-          {name || ''}
-        </Box>
-      </Box>
-    </>
-  );
-};
 
 export const ShowcaseItem = (props: any) => {
   const {

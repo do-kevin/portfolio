@@ -11,7 +11,7 @@ const StyledDiv = styled.div.attrs({ className: 'showcaseList hidden' })`
   }
 `;
 
-export const ShowcaseList = (props) => {
+const ShowcaseList = (props) => {
   const { showcase, offsetY, openPortfolioItem } = props;
   return (
     <StyledDiv style={{ transform: `translateY(-${offsetY}px)` }}>
@@ -27,3 +27,5 @@ export const ShowcaseList = (props) => {
     </StyledDiv>
   );
 };
+
+export default React.memo(ShowcaseList);
