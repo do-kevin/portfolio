@@ -1,16 +1,16 @@
-import React from 'react';
-import { Box, Heading, Paragraph, Anchor } from 'grommet';
-import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import {
-  faPaperPlane,
   faFileAlt,
   faFilePdf,
+  faPaperPlane,
 } from '@fortawesome/free-solid-svg-icons';
-import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Anchor, Box, Heading, Paragraph } from 'grommet';
+import React from 'react';
+import styled from 'styled-components';
 
-const Resume = require('assets/documents/kevindo_resume_august2020.docx');
-const ResumePDF = require('assets/documents/kevindo_resume_august2020.pdf');
+const Resume = require('assets/documents/kevindo_resume_september2020.docx');
+const ResumePDF = require('assets/documents/kevindo_resume_september2020.pdf');
 
 const bp1 = '24em';
 
