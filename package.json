@@ -41,7 +41,6 @@
     "start": "rescripts start",
     "build": "rescripts build",
     "test": "rescripts test",
-    "postdeploy": "cd build && mv index.html 200.html",
     "deploy": "surge --domain do.kevin.surge.sh"
   },
   "eslintConfig": {
