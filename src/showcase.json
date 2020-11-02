@@ -45,7 +45,7 @@
   {
     "name": "Zephyr Node",
     "type": "project",
-    "image": "https://i.imgur.com/xyiNfa9.png",
+    "image": "https://i.imgur.com/6ZJsOCM.png",
     "featured": false,
     "description": "A productivity app that helps organize their notes, to-dos, reminders, and flashcard decks. Its unique feature is giving users the option to send reminders and flashcards as text messages.",
     "technology": ["React", "Bootstrap", "Styled Components", "SCSS"],
