@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
-import { Route, NavLink } from 'react-router-dom';
-import { Grommet, Grid, Box } from 'grommet';
-import { animateScroll as scroll } from 'react-scroll';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBriefcase, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
-import { imported } from 'react-imported-component/macro';
-import styled from 'styled-components';
-import { ShowcaseCarousel, MouseScrollIcon, ShowcaseList } from 'components';
-import { useScrollPosition, useIsScrolling } from 'hooks';
-import { theme as MyGrommetTheme, colors } from 'theme';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { MouseScrollIcon, ShowcaseCarousel, ShowcaseList } from 'components';
 import { mqMaxHeight0, mqMaxHeight3 } from 'constants/mediaQueries';
+import { Box, Grid, Grommet } from 'grommet';
+import { useIsScrolling, useScrollPosition } from 'hooks';
+import React, { Component } from 'react';
+import { imported } from 'react-imported-component/macro';
+import { NavLink, Route } from 'react-router-dom';
+import { animateScroll as scroll } from 'react-scroll';
 import showcase from 'showcase.json';
+import styled from 'styled-components';
+import { colors, theme as MyGrommetTheme } from 'theme';
 
 const StyledGrid = styled(Grid)`
   @media ${mqMaxHeight3} {
@@ -25,7 +25,7 @@ const Portfolio = imported(() => import('screens/Portfolio'));
 const About = imported(() => import('screens/About'));
 const ShowcaseLayer = imported(() => import('components/ShowcaseLayer'));
 
-const showcaseModifier = 7;
+const showcaseModifier = 11;
 
 class HomeClass extends Component<{
   useScrollPosition: number[];
@@ -160,7 +160,10 @@ class HomeClass extends Component<{
                     className="text-white w-full py-4 flex justify-center items-center text-3xl focus:shadow-outline hover:text-secondary-theme-1 transition duration-200 ease-in-out"
                     activeStyle={{ color: colors['secondary-theme-1'] }}
                   >
-                    <FontAwesomeIcon icon={faInfoCircle} />
+                    <FontAwesomeIcon
+                      icon={faInfoCircle}
+                      className="text-black"
+                    />
                   </NavLink>
                   <MouseScrollIcon isScrolling={isScrolling} />
                   <NavLink
@@ -169,7 +172,10 @@ class HomeClass extends Component<{
                     className="text-white w-full py-4 flex justify-center items-center text-3xl focus:shadow-outline hover:text-secondary-theme-1 transition duration-200 ease-in-out"
                     activeStyle={{ color: colors['secondary-theme-1'] }}
                   >
-                    <FontAwesomeIcon icon={faBriefcase} />
+                    <FontAwesomeIcon
+                      icon={faBriefcase}
+                      className="text-black"
+                    />
                   </NavLink>
                 </Box>
                 <Box justify="center" align="center"></Box>

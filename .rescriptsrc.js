@@ -12,6 +12,8 @@ module.exports = [
   'env',
   {
     webpack: (config) => {
+      console.log("HELLOLOOOOOOOOOOOOOO?");
+      console.log(config.mode);
       const enableBundleAnalyzer =
         (process.env.REACT_APP_ENABLE_BUNDLE_ANALYZER &&
           JSON.parse(process.env.REACT_APP_ENABLE_BUNDLE_ANALYZER)) ||

@@ -1,20 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import { Box } from 'grommet';
-import styled from 'styled-components';
-import {
-  mqMin1,
-  mqMin2,
-  mqMin3,
-  mqMaxHeight1,
-  mqMaxHeight0,
-  mqMaxHeight2,
-} from 'constants/mediaQueries';
 import { ShowcasePreview } from 'components';
+import {
+  mqMaxHeight0, mqMaxHeight1,
+
+  mqMaxHeight2, mqMin1,
+  mqMin2,
+  mqMin3
+} from 'constants/mediaQueries';
+import { Box } from 'grommet';
+import React, { useEffect, useState } from 'react';
 import _showcase from 'showcase.json';
+import styled from 'styled-components';
 
 const CarouselBox = styled(Box).attrs((props: any) => {
   return {
-    className: `showcaseItem rounded mx-2 hover:text-secondary-theme-1 transition duration-200 ease-in-out text-center ${
+    className: `showcaseItem rounded-sm mx-2 hover:text-secondary-theme-1 transition duration-200 ease-in-out text-center ${
       props ? '' : ''
     }`,
   };
@@ -64,7 +63,7 @@ const mqh1 = `only screen and (max-height: ${bph1}em)`;
 
 const ListBox = styled(Box).attrs((props: any) => {
   return {
-    className: `showcaseItem rounded mx-auto hover:text-secondary-theme-1 transition duration-200 ease-in-out text-center ${
+    className: `showcaseItem rounded-sm mx-auto hover:text-secondary-theme-1 transition duration-200 ease-in-out text-center ${
       props ? '' : ''
     }`,
   };

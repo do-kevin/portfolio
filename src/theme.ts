@@ -1,7 +1,7 @@
-import { flowRight } from 'lodash';
-import { hsl2rgb, hslString2Object, color2cssString } from 'colors-convert';
+import { color2cssString, hsl2rgb, hslString2Object } from 'colors-convert';
 import { Color, HSL } from 'colors-convert/dist/types/types';
 import { ThemeType } from 'grommet';
+import { flowRight } from 'lodash';
 
 const convertHSL2RGB = (hslCssString) => {
   return flowRight(
@@ -12,12 +12,12 @@ const convertHSL2RGB = (hslCssString) => {
 };
 
 export const colors = {
-  'primary-theme-1': convertHSL2RGB('hsl(230,61%,14%)'),
-  'primary-theme-2': convertHSL2RGB('hsl(230,61%,17%)'),
-  'secondary-theme-1': convertHSL2RGB('hsl(189,86%,53%)'),
-  'secondary-theme-2': convertHSL2RGB('hsl(189,86%,43%)'),
-  'tertiary-theme-1': convertHSL2RGB('hsl(230,87%,59%)'),
-  'quaternary-theme-1': convertHSL2RGB('hsl(186,49%,92%)'),
+  'primary-theme-1': convertHSL2RGB('hsl(0, 0%, 95%)'),
+  'primary-theme-2': convertHSL2RGB('hsl(0, 0%, 98%)'),
+  'secondary-theme-1': convertHSL2RGB('hsl(200, 60%, 35%)'),
+  'secondary-theme-2': convertHSL2RGB('hsl(96, 63%, 43%)'),
+  'tertiary-theme-1': convertHSL2RGB('hsl(54, 100%, 50%)'),
+  'quaternary-theme-1': convertHSL2RGB('hsl(0, 100%, 47%)'),
 };
 
 export const theme: ThemeType = {

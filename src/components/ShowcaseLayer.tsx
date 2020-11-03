@@ -1,11 +1,11 @@
-import React from 'react';
-import { Layer, Box, Grid, Button } from 'grommet';
-import Img from 'react-cool-img';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import styled from 'styled-components';
-import { Links } from 'components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import LoadingImg from 'assets/gifs/gradientLoading.gif';
+import { Links } from 'components';
+import { Box, Button, Grid, Layer } from 'grommet';
+import React from 'react';
+import Img from 'react-cool-img';
+import styled from 'styled-components';
 
 const CloseButton = styled(Button)`
   background-color: gray;
@@ -84,7 +84,7 @@ const ShowcaseLayer = (props) => {
         <Img
           placeholder={LoadingImg}
           src={(showcase && showcase.image) || undefined}
-          className={`showcaseLayer__image rounded-lg mb-4 shadow-md object-contain`}
+          className={`showcaseLayer__image rounded mb-4 shadow-md object-contain`}
           alt={showcase ? showcase && showcase.name + ' image' : ''}
         />
         <Grid
@@ -94,7 +94,7 @@ const ShowcaseLayer = (props) => {
           className="pb-6 showcaseLayer__content"
         >
           <Box
-            className="p-3 rounded-lg"
+            className="p-3 rounded"
             style={{
               backgroundColor: 'rgba(1, 0, 15, 0.8)',
             }}

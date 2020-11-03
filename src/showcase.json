@@ -1,5 +1,23 @@
 [
   {
+    "name": "GroupJoy",
+    "type": "work",
+    "image": "https://i.imgur.com/CMEErY9.png",
+    "featured": true,
+    "description": "A web application where users can share and deliver e-cards with embedded messages and GIFs.",
+    "technology": [
+      "Next.js",
+      "React",
+      "Ant Design",
+      "Styled Components",
+      "Tailwind",
+      "SCSS"
+    ],
+    "links": {
+      "live": "https://groupjoy.co"
+    }
+  },
+  {
     "name": "School Sector",
     "type": "work",
     "image": "https://i.imgur.com/gVGPD3u.png",

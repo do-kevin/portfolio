@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
-import { colors } from 'theme';
 
 const StyledMouseScrollIcon = styled.span.attrs({
   className: 'scrollIcon',
@@ -66,10 +65,8 @@ const MouseScrollIcon = (props) => {
         <span
           className={`scrollIcon__innerWheel`}
           style={{
-            backgroundColor: isScrolling
-              ? colors['secondary-theme-2']
-              : 'lightgray',
-            borderColor: isScrolling ? colors['secondary-theme-1'] : 'white',
+            backgroundColor: isScrolling ? 'black' : 'lightgray',
+            borderColor: isScrolling ? 'lightgray' : 'black',
           }}
         />
       </span>
