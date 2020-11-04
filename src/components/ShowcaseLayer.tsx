@@ -48,7 +48,7 @@ const StyledLayer = styled(Layer).attrs({
     &__image {
       min-height: 30em;
       @media ${mq1} {
-        min-height: auto;
+        min-height: 101%;
       }
     }
     &__content {

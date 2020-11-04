@@ -1,10 +1,11 @@
 import { ShowcasePreview } from 'components';
 import {
-  mqMaxHeight0, mqMaxHeight1,
-
-  mqMaxHeight2, mqMin1,
+  mqMaxHeight0,
+  mqMaxHeight1,
+  mqMaxHeight2,
+  mqMin1,
   mqMin2,
-  mqMin3
+  mqMin3,
 } from 'constants/mediaQueries';
 import { Box } from 'grommet';
 import React, { useEffect, useState } from 'react';
@@ -42,6 +43,10 @@ const CarouselBox = styled(Box).attrs((props: any) => {
     &__figure {
       height: 100%;
       width: 100%;
+
+      img {
+        height: 101%;
+      }
     }
     &__name {
       @media ${mqMaxHeight2} {
@@ -77,6 +82,10 @@ const ListBox = styled(Box).attrs((props: any) => {
     &__figure {
       height: 100%;
       width: 100%;
+
+      img {
+        height: 101%;
+      }
     }
     &__name {
       @media ${mqh1} {

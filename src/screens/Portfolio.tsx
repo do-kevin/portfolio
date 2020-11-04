@@ -1,11 +1,11 @@
-import React from 'react';
-import { Box } from 'grommet';
-import Img from 'react-cool-img';
-import styled from 'styled-components';
-import showcase from 'showcase.json';
 import LoadingImg from 'assets/gifs/gradientLoading.gif';
+import { Box } from 'grommet';
+import React from 'react';
+import Img from 'react-cool-img';
+import showcase from 'showcase.json';
+import styled from 'styled-components';
 
-const curve = '1rem';
+const curve = '4px';
 
 const bp1 = '32em';
 
@@ -44,6 +44,7 @@ const StyledBox = styled(Box).attrs({
       }
     }
     &__itemImage {
+      height: 99%;
       border-top-left-radius: ${curve};
       border-top-right-radius: ${curve};
     }

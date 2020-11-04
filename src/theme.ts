@@ -12,12 +12,12 @@ const convertHSL2RGB = (hslCssString) => {
 };
 
 export const colors = {
-  'primary-theme-1': convertHSL2RGB('hsl(0, 0%, 95%)'),
-  'primary-theme-2': convertHSL2RGB('hsl(0, 0%, 98%)'),
-  'secondary-theme-1': convertHSL2RGB('hsl(200, 60%, 35%)'),
-  'secondary-theme-2': convertHSL2RGB('hsl(96, 63%, 43%)'),
-  'tertiary-theme-1': convertHSL2RGB('hsl(54, 100%, 50%)'),
-  'quaternary-theme-1': convertHSL2RGB('hsl(0, 100%, 47%)'),
+  'primary-theme-1': convertHSL2RGB('hsl(186, 49%, 98%)'),
+  'primary-theme-2': convertHSL2RGB('hsl(186, 49%, 92%)'),
+  'secondary-theme-1': convertHSL2RGB('hsl(186, 49%, 62%)'),
+  'secondary-theme-2': convertHSL2RGB('hsl(186, 49%, 52%)'),
+  'tertiary-theme-1': convertHSL2RGB('hsl(186, 49%, 92%)'),
+  'quaternary-theme-1': convertHSL2RGB('hsl(186, 49%, 62%)'),
 };
 
 export const theme: ThemeType = {

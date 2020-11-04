@@ -25,7 +25,6 @@ module.exports = {
       },
       fontFamily: {
         titilliumWeb: [
-          'Titillium Web',
           'Lato',
           'sans-serif',
           '-apple-system',

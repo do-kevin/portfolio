@@ -147,7 +147,7 @@ class HomeClass extends Component<{
                   <NavLink
                     exact
                     to="/"
-                    className="text-white w-full h-full flex justify-center items-center text-3xl focus:shadow-outline hover:text-secondary-theme-1 transition duration-200 ease-in-out font-titilliumWeb"
+                    className="text-black w-full h-full flex justify-center items-center text-3xl focus:shadow-outline hover:text-secondary-theme-1 transition duration-200 ease-in-out font-titilliumWeb"
                     activeStyle={{ color: colors['secondary-theme-1'] }}
                   >
                     KD
@@ -157,25 +157,19 @@ class HomeClass extends Component<{
                   <NavLink
                     exact
                     to="/about"
-                    className="text-white w-full py-4 flex justify-center items-center text-3xl focus:shadow-outline hover:text-secondary-theme-1 transition duration-200 ease-in-out"
+                    className="text-black w-full py-4 flex justify-center items-center text-3xl focus:shadow-outline hover:text-secondary-theme-1 transition duration-200 ease-in-out"
                     activeStyle={{ color: colors['secondary-theme-1'] }}
                   >
-                    <FontAwesomeIcon
-                      icon={faInfoCircle}
-                      className="text-black"
-                    />
+                    <FontAwesomeIcon icon={faInfoCircle} />
                   </NavLink>
                   <MouseScrollIcon isScrolling={isScrolling} />
                   <NavLink
                     exact
                     to="/portfolio"
-                    className="text-white w-full py-4 flex justify-center items-center text-3xl focus:shadow-outline hover:text-secondary-theme-1 transition duration-200 ease-in-out"
+                    className="text-black w-full py-4 flex justify-center items-center text-3xl focus:shadow-outline hover:text-secondary-theme-1 transition duration-200 ease-in-out"
                     activeStyle={{ color: colors['secondary-theme-1'] }}
                   >
-                    <FontAwesomeIcon
-                      icon={faBriefcase}
-                      className="text-black"
-                    />
+                    <FontAwesomeIcon icon={faBriefcase} />
                   </NavLink>
                 </Box>
                 <Box justify="center" align="center"></Box>

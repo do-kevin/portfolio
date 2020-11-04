@@ -11,6 +11,7 @@ const StyledMouseScrollIcon = styled.span.attrs({
   border-width: 0.25rem;
   border-style: solid;
   border-radius: 1em;
+  border-color: rgb(111, 196, 206);
   .scrollIcon {
     &__outerWheel {
       ${tw`block relative overflow-hidden`}
@@ -29,7 +30,7 @@ const StyledMouseScrollIcon = styled.span.attrs({
       border-width: 0.15em;
       transition: background-color 270ms;
       transition: border-color 270ms;
-      background: lightgray;
+      background: rgb(225, 243, 245);
     }
   }
 
@@ -65,8 +66,8 @@ const MouseScrollIcon = (props) => {
         <span
           className={`scrollIcon__innerWheel`}
           style={{
-            backgroundColor: isScrolling ? 'black' : 'lightgray',
-            borderColor: isScrolling ? 'lightgray' : 'black',
+            backgroundColor: 'rgb(225, 243, 245)',
+            borderColor: isScrolling ? 'rgb(111, 196, 206)' : 'black',
           }}
         />
       </span>

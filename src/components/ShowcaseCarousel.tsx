@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { Box } from 'grommet';
-import { Carousel } from 'react-responsive-carousel';
-import styled from 'styled-components';
 import { ShowcaseItem } from 'components';
 import { mqMax1, mqMaxHeight2 } from 'constants/mediaQueries';
+import { Box } from 'grommet';
+import React, { useEffect, useState } from 'react';
+import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import styled from 'styled-components';
 
 const StyledCarousel = styled(Carousel)`
   @media ${mqMax1} {
@@ -28,9 +28,9 @@ const StyledCarousel = styled(Carousel)`
 `;
 
 const StyledCounter = styled.div.attrs({
-  className:
-    'counter w-full text-center pt-1 pb-6 text-2xl text-quaternary-theme-1',
+  className: 'counter w-full text-center pt-1 pb-6 text-2xl',
 })`
+  color: rgb(111, 196, 206);
   @media ${mqMax1} {
     display: none;
   }
