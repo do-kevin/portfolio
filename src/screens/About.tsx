@@ -90,7 +90,7 @@ const About = () => {
       <Heading
         size="large"
         style={{ right: 3 }}
-        className="relative font-titilliumWeb about__introduction"
+        className="relative font-lato about__introduction"
         margin={{ bottom: 'small' }}
       >
         I am Kevin Do

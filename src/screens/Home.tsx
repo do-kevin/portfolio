@@ -147,7 +147,7 @@ class HomeClass extends Component<{
                   <NavLink
                     exact
                     to="/"
-                    className="text-black w-full h-full flex justify-center items-center text-3xl focus:shadow-outline hover:text-secondary-theme-1 transition duration-200 ease-in-out font-titilliumWeb"
+                    className="text-black w-full h-full flex justify-center items-center text-3xl focus:shadow-outline hover:text-secondary-theme-1 transition duration-200 ease-in-out font-lato"
                     activeStyle={{ color: colors['secondary-theme-1'] }}
                   >
                     KD

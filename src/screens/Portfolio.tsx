@@ -75,7 +75,7 @@ const Portfolio = (props) => {
         fill
         style={{ maxWidth: 720 }}
       >
-        <span className="mosiacShowcase__heading block text-5xl w-full text-center mt-12 mb-8 font-titilliumWeb">
+        <span className="mosiacShowcase__heading block text-5xl w-full text-center mt-12 mb-8 font-lato">
           WORK
         </span>
         {showcase
@@ -99,7 +99,7 @@ const Portfolio = (props) => {
               </span>
             </Box>
           ))}
-        <span className="mosiacShowcase__heading block text-5xl w-full text-center mt-12 mb-8 font-titilliumWeb">
+        <span className="mosiacShowcase__heading block text-5xl w-full text-center mt-12 mb-8 font-lato">
           PROJECTS
         </span>
         {showcase

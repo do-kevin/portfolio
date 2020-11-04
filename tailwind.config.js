@@ -24,7 +24,7 @@ module.exports = {
         'quaternary-theme-1': colors['quaternary-theme-1'].rgb,
       },
       fontFamily: {
-        titilliumWeb: [
+        lato: [
           'Lato',
           'sans-serif',
           '-apple-system',

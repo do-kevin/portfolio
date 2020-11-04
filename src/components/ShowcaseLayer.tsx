@@ -78,7 +78,7 @@ const ShowcaseLayer = (props) => {
         <CloseButton className="showcaseLayer__closeBtn" onClick={onClose}>
           <FontAwesomeIcon icon={faTimes} className="block m-auto" />
         </CloseButton>
-        <span className="showcaseLayer__name block font-bold text-center leading-tight font-titilliumWeb">
+        <span className="showcaseLayer__name block font-bold text-center leading-tight font-lato">
           {showcase ? showcase && showcase.name : ''}
         </span>
         <Img
@@ -101,14 +101,14 @@ const ShowcaseLayer = (props) => {
           >
             {showcase && showcase.description && (
               <>
-                <span className="text-gray-500 font-titilliumWeb font-bold text-base">
+                <span className="text-gray-500 font-lato font-bold text-base">
                   Description
                 </span>
                 <p>{showcase.description}</p>
               </>
             )}
             <div className="flex flex-col">
-              <span className="text-gray-500 font-titilliumWeb font-bold text-base">
+              <span className="text-gray-500 font-lato font-bold text-base">
                 Links
               </span>
               <Links links={showcase.links} />
@@ -121,7 +121,7 @@ const ShowcaseLayer = (props) => {
               backgroundColor: 'rgba(1, 0, 15, 0.8)',
             }}
           >
-            <span className="text-gray-500 font-titilliumWeb font-bold text-base">
+            <span className="text-gray-500 font-lato font-bold text-base">
               Technologies used
             </span>
             <ul className="text-right">

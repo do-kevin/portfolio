@@ -23,7 +23,7 @@ const ShowcasePreview = (props: any) => {
         align="center"
         pad="small"
       >
-        <Box className="text-4xl leading-none text-center font-titilliumWeb showcaseItem__name">
+        <Box className="text-4xl leading-none text-center font-lato showcaseItem__name">
           {name || ''}
         </Box>
       </Box>
