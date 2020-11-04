@@ -28,9 +28,9 @@ export const theme: ThemeType = {
     },
   },
   layer: {
-    background: 'rgba(1, 0, 15, 0.5)',
+    background: '#4a4a4a',
     overlay: {
-      background: 'rgba(1, 0, 15, 0.5)',
+      background: '#4a4a4a',
     },
   },
 };
