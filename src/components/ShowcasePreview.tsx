@@ -8,14 +8,12 @@ const ShowcasePreview = (props: any) => {
   const { image, name } = showcase;
   return (
     <>
-      <figure className="shadow-lg rounded showcaseItem__figure">
-        <Img
-          placeholder={LoadingImg}
-          src={image || undefined}
-          className={`object-contain rounded showcaseItem__image`}
-          alt={name + ' image'}
-        />
-      </figure>
+      <Img
+        placeholder={LoadingImg}
+        src={image || undefined}
+        className={`object-contain rounded showcaseItem__image shadow-lg`}
+        alt={name + ' image'}
+      />
       <Box
         as="footer"
         direction="row"

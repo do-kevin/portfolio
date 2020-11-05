@@ -1,5 +1,6 @@
 import { ShowcasePreview } from 'components';
 import {
+  mqMax1,
   mqMaxHeight0,
   mqMaxHeight1,
   mqMaxHeight2,
@@ -40,6 +41,9 @@ const CarouselBox = styled(Box).attrs((props: any) => {
   }
 
   .showcaseItem {
+    @media ${mqMax1} {
+      height: 223px;
+    }
     &__figure {
       height: 82%;
       width: 100%;
@@ -79,14 +83,6 @@ const ListBox = styled(Box).attrs((props: any) => {
   }
 
   .showcaseItem {
-    &__figure {
-      height: 100%;
-      width: 100%;
-
-      img {
-        height: 101%;
-      }
-    }
     &__name {
       @media ${mqh1} {
         font-size: 90%;
