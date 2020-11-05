@@ -41,7 +41,7 @@ const CarouselBox = styled(Box).attrs((props: any) => {
 
   .showcaseItem {
     &__figure {
-      height: 100%;
+      height: 82%;
       width: 100%;
 
       img {
@@ -68,7 +68,7 @@ const mqh1 = `only screen and (max-height: ${bph1}em)`;
 
 const ListBox = styled(Box).attrs((props: any) => {
   return {
-    className: `showcaseItem rounded-sm mx-auto hover:text-secondary-theme-1 transition duration-200 ease-in-out text-center ${
+    className: `showcaseItem rounded mx-auto hover:text-secondary-theme-1 transition duration-200 ease-in-out text-center ${
       props ? '' : ''
     }`,
   };
@@ -95,6 +95,8 @@ const ListBox = styled(Box).attrs((props: any) => {
   }
 `;
 
+const modifierTrigger = 0.3;
+
 export const ShowcaseItem = (props: any) => {
   const {
     index,
@@ -112,7 +114,7 @@ export const ShowcaseItem = (props: any) => {
   useEffect(() => {
     let alreadyMoved = false;
     const target = index * part;
-    const threshold = target ? target * 0.1 : 0;
+    const threshold = target ? target * modifierTrigger : 0;
     let maxThreshold = part ? Math.round(target + threshold) : 0;
     let minThreshold = 0;
 

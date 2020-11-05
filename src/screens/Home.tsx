@@ -25,7 +25,7 @@ const Portfolio = imported(() => import('screens/Portfolio'));
 const About = imported(() => import('screens/About'));
 const ShowcaseLayer = imported(() => import('components/ShowcaseLayer'));
 
-const showcaseModifier = 11;
+const showcaseModifier = 7;
 
 class HomeClass extends Component<{
   useScrollPosition: number[];

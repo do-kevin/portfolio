@@ -8,11 +8,11 @@ const ShowcasePreview = (props: any) => {
   const { image, name } = showcase;
   return (
     <>
-      <figure className="shadow-lg rounded-sm showcaseItem__figure">
+      <figure className="shadow-lg rounded showcaseItem__figure">
         <Img
           placeholder={LoadingImg}
           src={image || undefined}
-          className={`object-contain rounded-sm showcaseItem__image`}
+          className={`object-contain rounded showcaseItem__image`}
           alt={name + ' image'}
         />
       </figure>
@@ -23,7 +23,7 @@ const ShowcasePreview = (props: any) => {
         align="center"
         pad="small"
       >
-        <Box className="text-4xl leading-none text-center font-lato showcaseItem__name">
+        <Box className="text-4xl mt-4 leading-none text-center font-lato showcaseItem__name">
           {name || ''}
         </Box>
       </Box>
