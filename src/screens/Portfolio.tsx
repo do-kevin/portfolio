@@ -1,11 +1,11 @@
-import React from 'react';
-import { Box } from 'grommet';
-import Img from 'react-cool-img';
-import styled from 'styled-components';
-import showcase from 'showcase.json';
 import LoadingImg from 'assets/gifs/gradientLoading.gif';
+import { Box } from 'grommet';
+import React from 'react';
+import Img from 'react-cool-img';
+import showcase from 'showcase.json';
+import styled from 'styled-components';
 
-const curve = '1rem';
+const curve = '4px';
 
 const bp1 = '32em';
 
@@ -44,6 +44,7 @@ const StyledBox = styled(Box).attrs({
       }
     }
     &__itemImage {
+      height: 97%;
       border-top-left-radius: ${curve};
       border-top-right-radius: ${curve};
     }
@@ -54,6 +55,9 @@ const StyledBox = styled(Box).attrs({
       border-bottom-right-radius: ${curve};
       @media only screen and (max-width: 600px) {
         padding: 0.25rem 0.5rem;
+      }
+      @media only screen and (max-width: 565px) {
+        font-size: 12px;
       }
     }
   }
@@ -72,9 +76,9 @@ const Portfolio = (props) => {
         justify="between"
         wrap
         fill
-        style={{ maxWidth: 720 }}
+        style={{ maxWidth: 555 }}
       >
-        <span className="mosiacShowcase__heading block text-5xl w-full text-center mt-12 mb-8 font-titilliumWeb">
+        <span className="mosiacShowcase__heading block text-5xl w-full text-center mt-12 mb-8 font-lato">
           WORK
         </span>
         {showcase
@@ -91,6 +95,7 @@ const Portfolio = (props) => {
                 placeholder={LoadingImg}
                 src={s.image || undefined}
                 className={`object-cover mosiacShowcase__itemImage`}
+                style={{ height: '97%', minHeight: 'unset' }}
                 alt={s.name + ' image'}
               />
               <span className="block relative text-white bg-black text-base mosiacShowcase__itemName">
@@ -98,7 +103,7 @@ const Portfolio = (props) => {
               </span>
             </Box>
           ))}
-        <span className="mosiacShowcase__heading block text-5xl w-full text-center mt-12 mb-8 font-titilliumWeb">
+        <span className="mosiacShowcase__heading block text-5xl w-full text-center mt-12 mb-8 font-lato">
           PROJECTS
         </span>
         {showcase

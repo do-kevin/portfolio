@@ -1,11 +1,11 @@
-import React from 'react';
-import { Layer, Box, Grid, Button } from 'grommet';
-import Img from 'react-cool-img';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import styled from 'styled-components';
-import { Links } from 'components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import LoadingImg from 'assets/gifs/gradientLoading.gif';
+import { Links } from 'components';
+import { Box, Button, Grid, Layer } from 'grommet';
+import React from 'react';
+import Img from 'react-cool-img';
+import styled from 'styled-components';
 
 const CloseButton = styled(Button)`
   background-color: gray;
@@ -46,9 +46,9 @@ const StyledLayer = styled(Layer).attrs({
       }
     }
     &__image {
-      min-height: 30em;
+      min-height: 28em;
       @media ${mq1} {
-        min-height: auto;
+        min-height: 101%;
       }
     }
     &__content {
@@ -78,13 +78,13 @@ const ShowcaseLayer = (props) => {
         <CloseButton className="showcaseLayer__closeBtn" onClick={onClose}>
           <FontAwesomeIcon icon={faTimes} className="block m-auto" />
         </CloseButton>
-        <span className="showcaseLayer__name block font-bold text-center leading-tight font-titilliumWeb">
+        <span className="showcaseLayer__name block font-bold text-center leading-tight font-lato">
           {showcase ? showcase && showcase.name : ''}
         </span>
         <Img
           placeholder={LoadingImg}
           src={(showcase && showcase.image) || undefined}
-          className={`showcaseLayer__image rounded-lg mb-4 shadow-md object-contain`}
+          className={`showcaseLayer__image rounded mb-4 shadow-md object-contain`}
           alt={showcase ? showcase && showcase.name + ' image' : ''}
         />
         <Grid
@@ -94,21 +94,21 @@ const ShowcaseLayer = (props) => {
           className="pb-6 showcaseLayer__content"
         >
           <Box
-            className="p-3 rounded-lg"
+            className="p-3 rounded"
             style={{
               backgroundColor: 'rgba(1, 0, 15, 0.8)',
             }}
           >
             {showcase && showcase.description && (
               <>
-                <span className="text-gray-500 font-titilliumWeb font-bold text-base">
+                <span className="text-gray-500 font-lato font-bold text-base">
                   Description
                 </span>
                 <p>{showcase.description}</p>
               </>
             )}
             <div className="flex flex-col">
-              <span className="text-gray-500 font-titilliumWeb font-bold text-base">
+              <span className="text-gray-500 font-lato font-bold text-base">
                 Links
               </span>
               <Links links={showcase.links} />
@@ -121,7 +121,7 @@ const ShowcaseLayer = (props) => {
               backgroundColor: 'rgba(1, 0, 15, 0.8)',
             }}
           >
-            <span className="text-gray-500 font-titilliumWeb font-bold text-base">
+            <span className="text-gray-500 font-lato font-bold text-base">
               Technologies used
             </span>
             <ul className="text-right">

@@ -1,20 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import { Box } from 'grommet';
-import styled from 'styled-components';
+import { ShowcasePreview } from 'components';
 import {
+  mqMax1,
+  mqMaxHeight0,
+  mqMaxHeight1,
+  mqMaxHeight2,
   mqMin1,
   mqMin2,
   mqMin3,
-  mqMaxHeight1,
-  mqMaxHeight0,
-  mqMaxHeight2,
 } from 'constants/mediaQueries';
-import { ShowcasePreview } from 'components';
+import { Box } from 'grommet';
+import React, { useEffect, useState } from 'react';
 import _showcase from 'showcase.json';
+import styled from 'styled-components';
 
 const CarouselBox = styled(Box).attrs((props: any) => {
   return {
-    className: `showcaseItem rounded mx-2 hover:text-secondary-theme-1 transition duration-200 ease-in-out text-center ${
+    className: `showcaseItem rounded-sm mx-2 hover:text-secondary-theme-1 transition duration-200 ease-in-out text-center ${
       props ? '' : ''
     }`,
   };
@@ -40,9 +41,16 @@ const CarouselBox = styled(Box).attrs((props: any) => {
   }
 
   .showcaseItem {
+    @media ${mqMax1} {
+      height: 223px;
+    }
     &__figure {
-      height: 100%;
+      height: 82%;
       width: 100%;
+
+      img {
+        height: 101%;
+      }
     }
     &__name {
       @media ${mqMaxHeight2} {
@@ -75,10 +83,6 @@ const ListBox = styled(Box).attrs((props: any) => {
   }
 
   .showcaseItem {
-    &__figure {
-      height: 100%;
-      width: 100%;
-    }
     &__name {
       @media ${mqh1} {
         font-size: 90%;
@@ -86,6 +90,8 @@ const ListBox = styled(Box).attrs((props: any) => {
     }
   }
 `;
+
+const modifierTrigger = 0.3;
 
 export const ShowcaseItem = (props: any) => {
   const {
@@ -104,7 +110,7 @@ export const ShowcaseItem = (props: any) => {
   useEffect(() => {
     let alreadyMoved = false;
     const target = index * part;
-    const threshold = target ? target * 0.1 : 0;
+    const threshold = target ? target * modifierTrigger : 0;
     let maxThreshold = part ? Math.round(target + threshold) : 0;
     let minThreshold = 0;
 

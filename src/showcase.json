@@ -1,5 +1,23 @@
 [
   {
+    "name": "GroupJoy",
+    "type": "work",
+    "image": "https://i.imgur.com/CMEErY9.png",
+    "featured": true,
+    "description": "A web application where users can share and deliver e-cards with embedded messages and GIFs.",
+    "technology": [
+      "Next.js",
+      "React",
+      "Ant Design",
+      "Styled Components",
+      "Tailwind",
+      "SCSS"
+    ],
+    "links": {
+      "live": "https://groupjoy.co"
+    }
+  },
+  {
     "name": "School Sector",
     "type": "work",
     "image": "https://i.imgur.com/gVGPD3u.png",
@@ -45,7 +63,7 @@
   {
     "name": "Zephyr Node",
     "type": "project",
-    "image": "https://i.imgur.com/xyiNfa9.png",
+    "image": "https://i.imgur.com/6ZJsOCM.png",
     "featured": false,
     "description": "A productivity app that helps organize their notes, to-dos, reminders, and flashcard decks. Its unique feature is giving users the option to send reminders and flashcards as text messages.",
     "technology": ["React", "Bootstrap", "Styled Components", "SCSS"],
