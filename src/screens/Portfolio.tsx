@@ -73,7 +73,7 @@ const Portfolio = (props) => {
         justify="between"
         wrap
         fill
-        style={{ maxWidth: 720 }}
+        style={{ maxWidth: 555 }}
       >
         <span className="mosiacShowcase__heading block text-5xl w-full text-center mt-12 mb-8 font-lato">
           WORK
