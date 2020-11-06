@@ -1,21 +1,19 @@
-import React from 'react';
-import { Box } from 'grommet';
-import Img from 'react-cool-img';
 import LoadingImg from 'assets/gifs/gradientLoading.gif';
+import { Box } from 'grommet';
+import React from 'react';
+import Img from 'react-cool-img';
 
 const ShowcasePreview = (props: any) => {
   const { showcase } = props;
   const { image, name } = showcase;
   return (
     <>
-      <figure className="shadow-lg rounded showcaseItem__figure">
-        <Img
-          placeholder={LoadingImg}
-          src={image || undefined}
-          className={`object-contain rounded showcaseItem__image`}
-          alt={name + ' image'}
-        />
-      </figure>
+      <Img
+        placeholder={LoadingImg}
+        src={image || undefined}
+        className={`object-contain rounded showcaseItem__image shadow-lg`}
+        alt={name + ' image'}
+      />
       <Box
         as="footer"
         direction="row"
@@ -23,7 +21,7 @@ const ShowcasePreview = (props: any) => {
         align="center"
         pad="small"
       >
-        <Box className="text-4xl leading-none text-center font-titilliumWeb showcaseItem__name">
+        <Box className="text-4xl mt-4 leading-none text-center font-lato showcaseItem__name">
           {name || ''}
         </Box>
       </Box>

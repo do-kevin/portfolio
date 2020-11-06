@@ -1,16 +1,11 @@
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import {
-  faFileAlt,
-  faFilePdf,
-  faPaperPlane,
-} from '@fortawesome/free-solid-svg-icons';
+import { faFilePdf, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Anchor, Box, Heading, Paragraph } from 'grommet';
 import React from 'react';
 import styled from 'styled-components';
 
-const Resume = require('assets/documents/kevindo_resume_september2020.docx');
-const ResumePDF = require('assets/documents/kevindo_resume_september2020.pdf');
+const ResumePDF = require('assets/documents/kevindo_resume_november2020.pdf');
 
 const bp1 = '24em';
 
@@ -79,13 +74,8 @@ const anchors = [
     href: 'mailto:do.kevin.vo@gmail.com',
   },
   {
-    icon: faFileAlt,
-    label: 'Resume (.docx)',
-    href: Resume,
-  },
-  {
     icon: faFilePdf,
-    label: 'Resume (.pdf)',
+    label: 'Resume',
     href: ResumePDF,
     download: ResumePDF,
   },
@@ -100,7 +90,7 @@ const About = () => {
       <Heading
         size="large"
         style={{ right: 3 }}
-        className="relative font-titilliumWeb about__introduction"
+        className="relative font-lato about__introduction"
         margin={{ bottom: 'small' }}
       >
         I am Kevin Do
@@ -111,11 +101,8 @@ const About = () => {
         margin={{ bottom: 'small' }}
         className="about__role"
       >
-        A{' '}
-        <span className="text-secondary-theme-1" style={{ color: '#a7ff83' }}>
-          Front End
-        </span>{' '}
-        Engineer, <br />
+        A <span className="text-secondary-theme-1">Front End</span> Engineer,{' '}
+        <br />
         based in California
       </Heading>
       <Paragraph
