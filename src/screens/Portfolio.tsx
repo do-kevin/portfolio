@@ -44,7 +44,7 @@ const StyledBox = styled(Box).attrs({
       }
     }
     &__itemImage {
-      height: 99%;
+      height: 97%;
       border-top-left-radius: ${curve};
       border-top-right-radius: ${curve};
     }
@@ -55,6 +55,9 @@ const StyledBox = styled(Box).attrs({
       border-bottom-right-radius: ${curve};
       @media only screen and (max-width: 600px) {
         padding: 0.25rem 0.5rem;
+      }
+      @media only screen and (max-width: 565px) {
+        font-size: 12px;
       }
     }
   }
@@ -92,6 +95,7 @@ const Portfolio = (props) => {
                 placeholder={LoadingImg}
                 src={s.image || undefined}
                 className={`object-cover mosiacShowcase__itemImage`}
+                style={{ height: '97%', minHeight: 'unset' }}
                 alt={s.name + ' image'}
               />
               <span className="block relative text-white bg-black text-base mosiacShowcase__itemName">
