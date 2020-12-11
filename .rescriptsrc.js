@@ -1,4 +1,3 @@
-const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
@@ -24,7 +23,6 @@ module.exports = [
 
       config.plugins = [
         ...config.plugins,
-        config.mode === 'development' && new ReactRefreshWebpackPlugin(),
         new LodashModuleReplacementPlugin({
           currying: true,
           flattening: true,
