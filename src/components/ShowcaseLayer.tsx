@@ -52,6 +52,7 @@ const StyledLayer = styled(Layer).attrs({
       }
     }
     &__content {
+      height: auto;
       @media ${mq2} {
         font-size: 0.825rem;
       }
