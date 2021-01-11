@@ -5,7 +5,8 @@ import { Anchor, Box, Heading, Paragraph } from 'grommet';
 import React from 'react';
 import styled from 'styled-components';
 
-const ResumePDF = require('assets/documents/kevindo_resume_november2020.pdf');
+const ResumePDF = require('assets/documents/kevindo_resume_november2020.pdf')
+  .default;
 
 const bp1 = '24em';
 
